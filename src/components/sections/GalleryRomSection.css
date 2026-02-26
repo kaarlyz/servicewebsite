@@ -1,0 +1,498 @@
+/* Gallery ROM Section */
+.gallery-rom-section {
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #0f1219 0%, #1a202c 100%);
+}
+
+.gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d4d9e0;
+  margin: 0 0 16px 0;
+  background: linear-gradient(135deg, #a8afb8 0%, #7a8291 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #a8afb8;
+  margin: 0;
+}
+
+/* Main Gallery Container */
+.rom-gallery-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #1a202c;
+  border: 1px solid rgba(45, 55, 72, 0.5);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Column - ROM Selection */
+.rom-icons-column {
+  background: #0f1219;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(45, 55, 72, 0.5);
+  height: fit-content;
+}
+
+.rom-icons-title {
+  color: #d4d9e0;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(61, 69, 86, 0.5);
+}
+
+.rom-icons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(61, 69, 86, 0.6) rgba(45, 55, 72, 0.2);
+}
+
+.rom-icons-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rom-icons-grid::-webkit-scrollbar-track {
+  background: rgba(45, 55, 72, 0.15);
+  border-radius: 10px;
+}
+
+.rom-icons-grid::-webkit-scrollbar-thumb {
+  background: rgba(61, 69, 86, 0.5);
+  border-radius: 10px;
+}
+
+.rom-icons-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(61, 69, 86, 0.7);
+}
+
+.rom-icon-item {
+  padding: 10px 12px;
+  background: #1a202c;
+  border: 1px solid rgba(45, 55, 72, 0.5);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #a8afb8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rom-icon-item:hover {
+  border-color: rgba(61, 69, 86, 0.3);
+  background: #2d3748;
+  transform: translateY(-2px);
+}
+
+.rom-icon-item.active {
+  border-color: rgba(61, 69, 86, 0.5);
+  background: rgba(61, 69, 86, 0.1);
+  color: #d4d9e0;
+  box-shadow: 0 0 12px rgba(61, 69, 86, 0.15);
+}
+
+/* Right Column - Phone Display */
+.phone-mockup-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Phone Mockup Container */
+.phone-mockup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* 3-Phone Carousel Wrapper with 3D Support */
+.carousel-phones-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  perspective: 1500px;
+  -webkit-perspective: 1500px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.phone-carousel-side {
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.phone-carousel-center {
+  flex-shrink: 0;
+  z-index: 10;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Phone Frame Styles */
+.phone-frame.carousel-phone {
+  width: 280px;
+  padding: 12px 8px;
+  background: #111;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 2px #333,
+    inset 0 0 0 4px #222;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.phone-frame.full-phone {
+  width: 320px;
+  padding: 12px 8px;
+  background: #111;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 2px #333,
+    inset 0 0 0 4px #222;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Phone Screen */
+.phone-screen {
+  width: 100%;
+  height: 500px;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #1a202c;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+/* Phone Notch */
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #111;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.05);
+}
+
+/* ROM Navigation Arrows */
+.rom-nav-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  background: rgba(61, 69, 86, 0.2);
+  border: 1px solid rgba(61, 69, 86, 0.4);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4d9e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(61, 69, 86, 0.4);
+  border-color: rgba(61, 69, 86, 0.6);
+  color: #d4d9e0;
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.rom-counter {
+  color: #a8afb8;
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-width: 70px;
+  text-align: center;
+}
+
+/* ROM Info */
+.rom-info {
+  text-align: center;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.rom-info h3 {
+  color: #d4d9e0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .rom-gallery-container {
+    gap: 30px;
+    padding: 25px;
+  }
+
+  .phone-frame.full-phone {
+    width: 300px;
+  }
+
+  .phone-screen {
+    height: 470px;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 15px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 260px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .rom-gallery-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .rom-icons-column {
+    padding: 15px;
+  }
+
+  .rom-icons-grid {
+    flex-direction: row;
+    max-height: none;
+    padding-right: 0;
+    gap: 8px;
+  }
+
+  .rom-icon-item {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .phone-frame.full-phone {
+    width: 280px;
+  }
+
+  .phone-screen {
+    height: 440px;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 12px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-rom-section {
+    padding: 50px 20px;
+  }
+
+  .section-header h1 {
+    font-size: 2rem;
+  }
+
+  .rom-gallery-container {
+    gap: 25px;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .rom-icons-grid {
+    gap: 6px;
+  }
+
+  .rom-icon-item {
+    min-width: 70px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .phone-frame.full-phone {
+    width: 260px;
+  }
+
+  .phone-screen {
+    height: 410px;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 10px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 220px;
+  }
+
+  .rom-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rom-counter {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-rom-section {
+    padding: 40px 16px;
+  }
+
+  .section-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .rom-gallery-container {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .rom-icons-column {
+    padding: 12px;
+  }
+
+  .rom-icon-item {
+    min-width: 60px;
+    padding: 6px 8px;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 8px;
+  }
+
+  .phone-frame.full-phone {
+    width: 240px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 200px;
+  }
+
+  .phone-screen {
+    height: 380px;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .rom-counter {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-gallery-container {
+    padding: 12px;
+    gap: 15px;
+  }
+
+  .rom-icons-grid {
+    gap: 5px;
+  }
+
+  .rom-icon-item {
+    min-width: 50px;
+    padding: 5px 6px;
+    font-size: 0.75rem;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 5px;
+  }
+
+  .phone-frame.full-phone {
+    width: 220px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 180px;
+  }
+
+  .phone-screen {
+    height: 350px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .rom-counter {
+    font-size: 0.8rem;
+  }
+
+  .rom-info h3 {
+    font-size: 1.1rem;
+  }
+}
