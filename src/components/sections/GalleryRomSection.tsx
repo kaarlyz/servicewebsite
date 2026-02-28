@@ -3,9 +3,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './GalleryRomSection.css';
 
+// Import gambar lokal
+import photo1 from '../galeryrom/nusantara/photo1.jpg';
+import imagePng from '../galeryrom/nusantara/image.png';
+import imagePng2 from '../galeryrom/nusantara/image2.png';
+import imagePng4 from '../galeryrom/nusantara/image4.png';
+
 const GalleryRomSection = () => {
   const [activeRomIndex, setActiveRomIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  // Placeholder SVG data URI (tidak bergantung jaringan)
+  const getPlaceholder = (text: string = 'Gambar tidak tersedia') => {
+    return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='800' viewBox='0 0 400 800'%3E%3Crect width='400' height='800' fill='%232d3748'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23a0aec0' font-family='system-ui, sans-serif' font-size='24'%3E${encodeURIComponent(text)}%3C/text%3E%3C/svg%3E`;
+  };
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const img = e.currentTarget;
+    img.onerror = null; 
+    img.src = getPlaceholder('Gambar error');
+  };
 
   const handlePrevImage = () => {
     const totalImages = romData[activeRomIndex].images.length;
@@ -26,9 +43,10 @@ const GalleryRomSection = () => {
     {
       name: 'LineageOS',
       images: [
-        'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=800&fit=crop'
+        photo1,
+        imagePng,
+        imagePng2,
+        imagePng4,
       ]
     },
     {
@@ -89,6 +107,11 @@ const GalleryRomSection = () => {
     }
   ];
 
+  // Hitung indeks gambar sebelumnya dan berikutnya dalam ROM yang sama
+  const totalImages = romData[activeRomIndex].images.length;
+  const prevImageIndex = (activeImageIndex - 1 + totalImages) % totalImages;
+  const nextImageIndex = (activeImageIndex + 1) % totalImages;
+
   return (
     <section id="gallery-rom" className="section gallery-rom-section">
       <div className="gallery-container">
@@ -132,7 +155,7 @@ const GalleryRomSection = () => {
           <div className="phone-mockup-column">
             {/* 3-Phone Carousel Container with 3D Perspective */}
             <div className="carousel-phones-wrapper" style={{ perspective: '1500px' }}>
-              {/* Prev ROM Phone (Semi-transparent) */}
+              {/* Previous Image Phone (dari ROM yang sama, dengan efek gelap) */}
               <motion.div
                 className="phone-carousel-side prev-phone"
                 initial={{ opacity: 0.3, x: -30, scale: 0.8, rotateY: -20 }}
@@ -141,19 +164,21 @@ const GalleryRomSection = () => {
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
-                    <img 
-                      src={romData[(activeRomIndex - 1 + romData.length) % romData.length].images[activeImageIndex]} 
-                      alt="Previous ROM"
+                    <img
+                      src={romData[activeRomIndex].images[prevImageIndex]}
+                      alt="Previous image"
+                      onError={handleImageError}
+                      loading="lazy"
                     />
                   </div>
                   <div className="phone-notch"></div>
                 </div>
               </motion.div>
 
-              {/* Center ROM Phone (Active) - with 3D Animation */}
+              {/* Center ROM Phone (Active) */}
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={`center-${activeRomIndex}`}
+                  key={`center-${activeRomIndex}-${activeImageIndex}`}
                   className="phone-carousel-center"
                   initial={{ opacity: 0, rotateY: 90, scale: 0.9 }}
                   animate={{ opacity: 1, rotateY: 0, scale: 1, transition: { duration: 0.6, ease: 'easeInOut' } }}
@@ -162,9 +187,11 @@ const GalleryRomSection = () => {
                 >
                   <div className="phone-frame main full-phone">
                     <div className="phone-screen">
-                      <img 
-                        src={romData[activeRomIndex].images[activeImageIndex]} 
-                        alt={`${romData[activeRomIndex].name}`}
+                      <img
+                        src={romData[activeRomIndex].images[activeImageIndex]}
+                        alt={romData[activeRomIndex].name}
+                        onError={handleImageError}
+                        loading="lazy"
                       />
                     </div>
                     <div className="phone-notch"></div>
@@ -172,7 +199,7 @@ const GalleryRomSection = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Next ROM Phone (Semi-transparent) */}
+              {/* Next Image Phone (dari ROM yang sama, dengan efek gelap) */}
               <motion.div
                 className="phone-carousel-side next-phone"
                 initial={{ opacity: 0.3, x: 30, scale: 0.8, rotateY: 20 }}
@@ -181,9 +208,11 @@ const GalleryRomSection = () => {
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
-                    <img 
-                      src={romData[(activeRomIndex + 1) % romData.length].images[activeImageIndex]} 
-                      alt="Next ROM"
+                    <img
+                      src={romData[activeRomIndex].images[nextImageIndex]}
+                      alt="Next image"
+                      onError={handleImageError}
+                      loading="lazy"
                     />
                   </div>
                   <div className="phone-notch"></div>
@@ -191,7 +220,7 @@ const GalleryRomSection = () => {
               </motion.div>
             </div>
 
-            {/* Navigation Arrows - for Image Navigation within ROM */}
+            {/* Navigation Arrows - untuk berganti gambar dalam ROM yang sama */}
             <div className="rom-nav-arrows">
               <motion.button
                 className="carousel-arrow prev-btn"

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageSquare, Send, MessageCircle, Instagram } from 'lucide-react';
 import './ContactSection.css';
 
 const ContactSection = () => {
@@ -35,7 +35,7 @@ const ContactSection = () => {
       `Halo RestuTech,\n\nNama: ${formData.name}\nEmail: ${formData.email}\nNo. WhatsApp: ${formData.whatsapp || 'Tidak ada'}\nPesan: ${formData.message}`
     );
     
-    window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
+    window.open(`https://wa.me/6285177542325?text=${message}`, '_blank');
 
     // Reset form
     setFormData({ name: '', email: '', whatsapp: '', message: '' });
@@ -49,19 +49,19 @@ const ContactSection = () => {
       id: 1,
       icon: MapPin,
       title: 'Alamat',
-      content: 'Jl. Teknologi No. 123, Jakarta Selatan'
+      content: 'Jl. Makmur Pasar 7 Tembung, Medan Sumatera Utara'
     },
     {
       id: 2,
       icon: Phone,
       title: 'Telepon / WhatsApp',
-      content: '+62 812-3456-7890'
+      content: '+62 851-7754-2325'
     },
     {
       id: 3,
       icon: Mail,
       title: 'Email',
-      content: 'restutech@gmail.com'
+      content: 'ekarestusyahputra.id@gmail.com'
     },
     {
       id: 4,
@@ -143,39 +143,39 @@ const ContactSection = () => {
             >
               <h3>Media Sosial Kami</h3>
               <div className="social-icons">
-                <motion.a
-                  href="https://wa.me/628123456789"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon whatsapp"
-                  whileHover={{ scale: 1.1, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label="WhatsApp"
-                >
-                  <MessageSquare size={24} />
-                </motion.a>
-                <motion.a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon instagram"
-                  whileHover={{ scale: 1.1, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label="Instagram"
-                >
-                  📷
-                </motion.a>
-                <motion.a
-                  href="https://t.me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon telegram"
-                  whileHover={{ scale: 1.1, y: -4 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label="Telegram"
-                >
-                  ✈️
-                </motion.a>
+                  <motion.a 
+              href="https://wa.me/6285177542325" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="button whatsapp"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <MessageCircle size={18} />
+              WhatsApp
+            </motion.a>
+              <motion.a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="button instagram"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Instagram size={18} />
+              Instagram
+            </motion.a>
+                <motion.a 
+              href="https://t.me" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="button telegram"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Send size={18} />
+              Telegram
+            </motion.a>
               </div>
             </motion.div>
           </motion.div>

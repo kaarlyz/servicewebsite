@@ -47,7 +47,7 @@ const HomeSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="home-title">Selamat Datang di Restu Tech Solution</h2>
+          <h2 className="home-title">Kika Akan Meningkatkan Performa Device Anda</h2>
           
           <h3 className="home-subtitle">
             <span className="typing-text">{typing}</span>
@@ -61,7 +61,7 @@ const HomeSection = () => {
           
           <div className="button-container">
             <motion.a 
-              href="https://wa.me/628123456789" 
+              href="https://wa.me/6285177542325" 
               target="_blank" 
               rel="noopener noreferrer"
               className="button whatsapp"

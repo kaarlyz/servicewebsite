@@ -56,7 +56,7 @@ const Header = ({ scrollPosition }: HeaderProps) => {
     >
       <div className="header-container">
         <div className="header-logo">
-          <h1>RestuTech</h1>
+          <h1>KikaID</h1>
         </div>
 
         {/* Desktop Navigation */}

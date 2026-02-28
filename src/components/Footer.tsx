@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>RestuTech</h3>
+            <h3>KikaID</h3>
             <p>Solusi terpercaya untuk kebutuhan smartphone Anda dengan teknologi terkini dan layanan terbaik.</p>
           </div>
 
@@ -25,10 +25,10 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Kontak</h4>
             <ul>
-              <li><a href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href="https://wa.me/6285177542325" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
               <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               <li><a href="https://t.me" target="_blank" rel="noopener noreferrer">Telegram</a></li>
-              <li><a href="mailto:restutech@gmail.com">Email</a></li>
+              <li><a href="mailto:ekarestusyahputra.id@gmail.com">Email</a></li>
             </ul>
           </div>
 
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} RestuTech. All rights reserved. | Made with React & Framer Motion</p>
+          <p>&copy; {currentYear} kikaid. All rights reserved. | Made with React & Framer Motion</p>
         </div>
       </div>
     </footer>
