@@ -20,7 +20,7 @@ const GalleryRomSection = () => {
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
-    img.onerror = null; 
+    img.onerror = null;   
     img.src = getPlaceholder('Gambar error');
   };
 

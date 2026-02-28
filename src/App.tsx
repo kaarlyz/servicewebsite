@@ -8,6 +8,7 @@ import TestimonialsSection from './components/sections/TestimonialsSection';
 import GalleryRomSection from './components/sections/GalleryRomSection';
 import ContactSection from './components/sections/ContactSection';
 import Footer from './components/Footer';
+import RecommendedSection from './components/sections/Recommended-Section';  // <-- DIUBAH
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <PricingSection />
           <TestimonialsSection />
           <GalleryRomSection />
+          <RecommendedSection />  {/* <-- SUDAH BENAR */}
           <ContactSection />
         </main>
         <Footer />

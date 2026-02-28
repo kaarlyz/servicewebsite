@@ -11,14 +11,15 @@ const Header = ({ scrollPosition }: HeaderProps) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'layanan', label: 'Layanan' },
-    { id: 'harga', label: 'Harga' },
-    { id: 'testimoni', label: 'Testimoni' },
-    { id: 'gallery-rom', label: 'Gallery ROM' },
-    { id: 'kontak', label: 'Kontak' }
-  ];
+const navLinks = [
+  { id: 'home', label: 'Home' },
+  { id: 'layanan', label: 'Layanan' },
+  { id: 'harga', label: 'Harga' },
+  { id: 'testimoni', label: 'Testimoni' },
+  { id: 'gallery-rom', label: 'Gallery ROM' },
+  { id: 'kontak', label: 'Kontak' },
+  { id: 'rekomendasi', label: 'Rekomendasi' }  // <-- Ini ID yang dicari
+];
 
   useEffect(() => {
     const sections = navLinks.map(link => link.id);
