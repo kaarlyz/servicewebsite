@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send, MessageCircle, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock,  Send, MessageCircle, Instagram } from 'lucide-react';
 import './ContactSection.css';
 
 const ContactSection = () => {
