@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import './TestimonialsSection.css';
+import './TestimonialsSection-mobile.css';
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -81,7 +82,7 @@ const TestimonialsSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <h1>Apa Kata Mereka</h1>
@@ -93,7 +94,7 @@ const TestimonialsSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {testimonials.map((testimonial) => (
             <motion.div

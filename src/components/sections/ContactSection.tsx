@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock,  Send, MessageCircle, Instagram } from 'lucide-react';
 import './ContactSection.css';
+import './ContactSection-mobile.css';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -71,17 +72,6 @@ const ContactSection = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -98,7 +88,7 @@ const ContactSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <h1>Hubungi Kami</h1>
@@ -108,11 +98,11 @@ const ContactSection = () => {
         <div className="contact-content">
           {/* Contact Info */}
           <motion.div 
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
             className="contact-info"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             <div className="info-items">
               {contactInfo.map((item) => {

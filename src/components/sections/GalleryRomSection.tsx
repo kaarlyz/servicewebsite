@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './GalleryRomSection.css';
+import './GalleryRomSection-mobile.css';
 
 // Import gambar lokal
 import photo1 from '../galeryrom/nusantara/photo1.jpg';
@@ -119,7 +120,7 @@ const GalleryRomSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <h1>Custom ROM Gallery</h1>
@@ -130,7 +131,7 @@ const GalleryRomSection = () => {
           className="rom-gallery-container"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           {/* Left Column: ROM Selection */}
@@ -157,10 +158,37 @@ const GalleryRomSection = () => {
             <div className="carousel-phones-wrapper" style={{ perspective: '1500px' }}>
               {/* Previous Image Phone (dari ROM yang sama, dengan efek gelap) */}
               <motion.div
+                key={`prev-${activeRomIndex}-${prevImageIndex}`}
                 className="phone-carousel-side prev-phone"
-                initial={{ opacity: 0.3, x: -30, scale: 0.8, rotateY: -20 }}
-                animate={{ opacity: 0.3, x: -30, scale: 0.8, rotateY: -20 }}
-                transition={{ duration: 0.3 }}
+                initial={{ 
+                  opacity: 0, 
+                  x: -80, 
+                  scale: 0.6, 
+                  rotateY: -60,
+                  rotateX: 10,
+                  z: -200
+                }}
+                animate={{ 
+                  opacity: 0.2, 
+                  x: -40, 
+                  scale: 0.75, 
+                  rotateY: -35,
+                  rotateX: 0,
+                  z: 0
+                }}
+                exit={{ 
+                  opacity: 0, 
+                  x: -80, 
+                  scale: 0.6, 
+                  rotateY: -60,
+                  rotateX: 10,
+                  z: -200
+                }}
+                transition={{ 
+                  duration: 0.6, 
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
@@ -175,14 +203,36 @@ const GalleryRomSection = () => {
                 </div>
               </motion.div>
 
-              {/* Center ROM Phone (Active) */}
+              {/* Center ROM Phone (Active) - Cube Center */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`center-${activeRomIndex}-${activeImageIndex}`}
                   className="phone-carousel-center"
-                  initial={{ opacity: 0, rotateY: 90, scale: 0.9 }}
-                  animate={{ opacity: 1, rotateY: 0, scale: 1, transition: { duration: 0.6, ease: 'easeInOut' } }}
-                  exit={{ opacity: 0, rotateY: -90, scale: 0.9 }}
+                  initial={{ 
+                    opacity: 0, 
+                    rotateY: 120, 
+                    rotateX: -30,
+                    scale: 0.7,
+                    z: -300
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    rotateY: 0, 
+                    rotateX: 0,
+                    scale: 1,
+                    z: 0,
+                    transition: { 
+                      duration: 0.9, 
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    } 
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    rotateY: -120, 
+                    rotateX: 30,
+                    scale: 0.7,
+                    z: -300
+                  }}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div className="phone-frame main full-phone">
@@ -201,10 +251,37 @@ const GalleryRomSection = () => {
 
               {/* Next Image Phone (dari ROM yang sama, dengan efek gelap) */}
               <motion.div
+                key={`next-${activeRomIndex}-${nextImageIndex}`}
                 className="phone-carousel-side next-phone"
-                initial={{ opacity: 0.3, x: 30, scale: 0.8, rotateY: 20 }}
-                animate={{ opacity: 0.3, x: 30, scale: 0.8, rotateY: 20 }}
-                transition={{ duration: 0.3 }}
+                initial={{ 
+                  opacity: 0, 
+                  x: 80, 
+                  scale: 0.6, 
+                  rotateY: 60,
+                  rotateX: 10,
+                  z: -200
+                }}
+                animate={{ 
+                  opacity: 0.2, 
+                  x: 40, 
+                  scale: 0.75, 
+                  rotateY: 35,
+                  rotateX: 0,
+                  z: 0
+                }}
+                exit={{ 
+                  opacity: 0, 
+                  x: 80, 
+                  scale: 0.6, 
+                  rotateY: 60,
+                  rotateX: 10,
+                  z: -200
+                }}
+                transition={{ 
+                  duration: 0.6, 
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">

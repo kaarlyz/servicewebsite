@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import './PricingSection.css';
+import './PricingSection-mobile.css';
 
 const PricingSection = () => {
   const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
@@ -101,7 +102,7 @@ const PricingSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <h1>Harga Layanan</h1>
@@ -113,7 +114,7 @@ const PricingSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {pricingPlans.map((plan) => (
             <motion.div

@@ -1,0 +1,142 @@
+/* SERVICES SECTION - MOBILE RESPONSIVE REDESIGN */
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 40px 16px;
+  }
+
+  .services-container {
+    padding: 0;
+  }
+
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  .service-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+    min-height: auto;
+  }
+
+  .service-price {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 30px 12px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  .services-grid {
+    gap: 12px;
+  }
+
+  .service-card {
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .service-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 10px;
+  }
+
+  .service-icon {
+    font-size: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.8rem;
+  }
+
+  .service-price {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .services-section {
+    padding: 24px 10px;
+  }
+
+  .section-header {
+    margin-bottom: 18px;
+  }
+
+  .section-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .section-header p {
+    font-size: 0.85rem;
+  }
+
+  .service-card {
+    padding: 12px 10px;
+  }
+
+  .service-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 8px;
+  }
+
+  .service-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .service-card p {
+    font-size: 0.75rem;
+  }
+}

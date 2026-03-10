@@ -1,7 +1,76 @@
 /* Gallery ROM Section */
 .gallery-rom-section {
-  padding: 80px 40px;
+  padding: 60px 30px;
   background: linear-gradient(180deg, #0f1219 0%, #1a202c 100%);
+  overflow-x: hidden;
+}
+
+@media (max-width: 1200px) {
+  .gallery-rom-section {
+    padding: 50px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-rom-section {
+    padding: 45px 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-rom-section {
+    padding: 35px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-rom-section {
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .gallery-rom-section {
+    padding: 24px 8px;
+  }
+}
+
+/* Scroll Animations */
+@keyframes slideInUpGallery {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeftGallery {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRightGallery {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.gallery-rom-section {
+  animation: slideInUpGallery 0.8s ease-out forwards;
 }
 
 .gallery-container {
@@ -11,18 +80,39 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  animation: slideInUpGallery 0.8s ease-out 0.1s backwards;
 }
 
 .section-header h1 {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #d4d9e0;
   margin: 0 0 16px 0;
   background: linear-gradient(135deg, #a8afb8 0%, #7a8291 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .section-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-header h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
 }
 
 .section-header p {
@@ -31,36 +121,109 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .section-header p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header p {
+    font-size: 0.9rem;
+  }
+}
+
 /* Main Gallery Container */
 .rom-gallery-container {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 50px;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 30px;
-  background: #1a202c;
-  border: 1px solid rgba(45, 55, 72, 0.5);
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  padding: 40px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  animation: slideInUpGallery 0.8s ease-out 0.2s backwards;
+}
+
+@media (max-width: 1024px) {
+  .rom-gallery-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 25px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rom-gallery-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-gallery-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px 8px;
+  }
 }
 
 /* Left Column - ROM Selection */
 .rom-icons-column {
-  background: #0f1219;
-  border-radius: 20px;
-  padding: 20px;
-  border: 1px solid rgba(45, 55, 72, 0.5);
+  background: #1a202c;
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid rgba(45, 55, 72, 0.6);
   height: fit-content;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: slideInLeftGallery 0.8s ease-out 0.3s backwards;
+}
+
+@media (max-width: 1024px) {
+  .rom-icons-column {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rom-icons-column {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-icons-column {
+    padding: 12px;
+  }
 }
 
 .rom-icons-title {
   color: #d4d9e0;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 15px 0;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(61, 69, 86, 0.5);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 640px) {
+  .rom-icons-title {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-icons-title {
+    font-size: 0.85rem;
+  }
 }
 
 .rom-icons-grid {
@@ -72,6 +235,28 @@
   padding-right: 8px;
   scrollbar-width: thin;
   scrollbar-color: rgba(61, 69, 86, 0.6) rgba(45, 55, 72, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .rom-icons-grid {
+    flex-direction: row;
+    max-height: none;
+    padding-right: 0;
+    bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-icons-grid {
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+  }
 }
 
 .rom-icons-grid::-webkit-scrollbar {
@@ -101,11 +286,35 @@
   transition: all 0.2s ease;
   color: #a8afb8;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .rom-icon-item {
+    flex: 1;
+    min-width: 70px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .rom-icon-item {
+    min-width: 65px;
+    padding: 7px 8px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rom-icon-item {
+    min-width: 60px;
+    padding: 6px 8px;
+  }
 }
 
 .rom-icon-item:hover {
@@ -139,22 +348,60 @@
 
 /* 3-Phone Carousel Wrapper with 3D Support */
 .carousel-phones-wrapper {
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   position: relative;
-  perspective: 1500px;
-  -webkit-perspective: 1500px;
+  perspective: 2000px;
+  -webkit-perspective: 2000px;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  min-height: 500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .carousel-phones-wrapper {
+    gap: 16px;
+    min-height: 470px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-phones-wrapper {
+    gap: 12px;
+    min-height: 410px;
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel-phones-wrapper {
+    gap: 10px;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-phones-wrapper {
+    gap: 8px;
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 360px) {
+  .carousel-phones-wrapper {
+    gap: 4px;
+    min-height: 280px;
+  }
 }
 
 .phone-carousel-side {
   flex-shrink: 0;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
 }
 
 .phone-carousel-center {
@@ -168,40 +415,118 @@
 
 /* Phone Frame Styles */
 .phone-frame.carousel-phone {
-  width: 280px;
-  padding: 12px 8px;
+  width: 270px;
+  padding: 8px 6px;
   background: #111;
-  border-radius: 40px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
-    inset 0 0 0 2px #333,
-    inset 0 0 0 4px #222;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 39px;
+  overflow: visible;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1.5px #333,
+    inset 0 0 0 3px #222;
+  border: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
+@media (max-width: 1024px) {
+  .phone-frame.carousel-phone {
+    width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phone-frame.carousel-phone {
+    width: 210px;
+  }
+}
+
+@media (max-width: 640px) {
+  .phone-frame.carousel-phone {
+    width: 190px;
+    padding: 7px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-frame.carousel-phone {
+    width: 170px;
+    padding: 6px 4px;
+  }
+}
+
 .phone-frame.full-phone {
-  width: 320px;
-  padding: 12px 8px;
+  width: 310px;
+  padding: 8px 6px;
   background: #111;
-  border-radius: 40px;
-  overflow: hidden;
-  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8),
-    inset 0 0 0 2px #333,
-    inset 0 0 0 4px #222;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 39px;
+  overflow: visible;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1.5px #333,
+    inset 0 0 0 3px #222;
+  border: none;
   transition: all 0.3s ease;
   position: relative;
+}
+
+@media (max-width: 1024px) {
+  .phone-frame.full-phone {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phone-frame.full-phone {
+    width: 250px;
+  }
+}
+
+@media (max-width: 640px) {
+  .phone-frame.full-phone {
+    width: 220px;
+    padding: 7px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-frame.full-phone {
+    width: 200px;
+    padding: 6px 4px;
+  }
 }
 
 /* Phone Screen */
 .phone-screen {
   width: 100%;
-  height: 500px;
-  border-radius: 38px;
+  height: 670px;
+  border-radius: 36px;
   overflow: hidden;
   background: #1a202c;
+}
+
+@media (max-width: 1024px) {
+  .phone-screen {
+    height: 610px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phone-screen {
+    height: 540px;
+  }
+}
+
+@media (max-width: 640px) {
+  .phone-screen {
+    height: 480px;
+    border-radius: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-screen {
+    height: 430px;
+    border-radius: 28px;
+  }
 }
 
 .phone-screen img {
@@ -278,43 +603,45 @@
 .rom-info h3 {
   color: #d4d9e0;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
+  letter-spacing: 0.5px;
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
   .rom-gallery-container {
-    gap: 30px;
-    padding: 25px;
+    gap: 40px;
+    padding: 35px 18px;
+    grid-template-columns: 200px 1fr;
   }
 
   .phone-frame.full-phone {
-    width: 300px;
+    width: 290px;
   }
 
   .phone-screen {
-    height: 470px;
+    height: 628px;
   }
 
   .carousel-phones-wrapper {
-    gap: 15px;
+    gap: 12px;
   }
 
   .phone-frame.carousel-phone {
-    width: 260px;
+    width: 250px;
   }
 }
 
 @media (max-width: 1024px) {
   .rom-gallery-container {
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 20px;
+    gap: 35px;
+    padding: 30px 16px;
   }
 
   .rom-icons-column {
-    padding: 15px;
+    padding: 14px;
   }
 
   .rom-icons-grid {
@@ -326,29 +653,34 @@
 
   .rom-icon-item {
     flex: 1;
-    min-width: 80px;
+    min-width: 75px;
   }
 
   .phone-frame.full-phone {
-    width: 280px;
+    width: 270px;
   }
 
   .phone-screen {
-    height: 440px;
+    height: 585px;
   }
 
   .carousel-phones-wrapper {
-    gap: 12px;
+    gap: 10px;
+    min-height: 520px;
   }
 
   .phone-frame.carousel-phone {
-    width: 240px;
+    width: 230px;
   }
 }
 
 @media (max-width: 768px) {
   .gallery-rom-section {
-    padding: 50px 20px;
+    padding: 45px 18px;
+  }
+
+  .gallery-container {
+    padding: 0 0;
   }
 
   .section-header h1 {
@@ -356,9 +688,14 @@
   }
 
   .rom-gallery-container {
-    gap: 25px;
-    padding: 20px;
-    border-radius: 20px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .rom-icons-column {
+    padding: 12px;
   }
 
   .rom-icons-grid {
@@ -371,16 +708,21 @@
     font-size: 0.8rem;
   }
 
+  .phone-mockup-column {
+    width: 100%;
+  }
+
   .phone-frame.full-phone {
     width: 260px;
   }
 
   .phone-screen {
-    height: 410px;
+    height: 563px;
   }
 
   .carousel-phones-wrapper {
-    gap: 10px;
+    gap: 16px;
+    min-height: 480px;
   }
 
   .phone-frame.carousel-phone {
@@ -389,6 +731,7 @@
 
   .rom-info h3 {
     font-size: 1.2rem;
+    font-weight: 700;
   }
 
   .carousel-arrow {
@@ -403,17 +746,152 @@
 
 @media (max-width: 640px) {
   .gallery-rom-section {
-    padding: 40px 16px;
+    padding: 35px 14px;
   }
 
   .section-header h1 {
     font-size: 1.8rem;
   }
 
+  .section-header p {
+    font-size: 1rem;
+  }
+
   .rom-gallery-container {
     grid-template-columns: 1fr;
-    padding: 15px;
+    padding: 16px 12px;
+    gap: 24px;
+  }
+
+  .rom-icons-column {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .rom-icon-item {
+    min-width: 60px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 8px;
+    min-height: 420px;
+  }
+
+  .phone-frame.full-phone {
+    width: 240px;
+    padding: 7px 5px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 200px;
+    padding: 7px 5px;
+  }
+
+  .phone-screen {
+    height: 520px;
+    border-radius: 32px;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .rom-counter {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-rom-section {
+    padding: 28px 12px;
+  }
+
+  .section-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .rom-gallery-container {
+    padding: 16px 10px;
     gap: 20px;
+  }
+
+  .rom-icons-grid {
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .rom-icon-item {
+    min-width: 80px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Hide side phones on small mobile */
+  .phone-carousel-side {
+    display: none;
+  }
+
+  .carousel-phones-wrapper {
+    gap: 0;
+    min-height: 380px;
+    justify-content: center;
+  }
+
+  .phone-frame.full-phone {
+    width: 220px;
+    padding: 6px 4px;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 220px;
+    padding: 6px 4px;
+  }
+
+  .phone-screen {
+    height: 476px;
+    border-radius: 28px;
+  }
+
+  .carousel-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .rom-counter {
+    font-size: 0.75rem;
+  }
+
+  .rom-info h3 {
+    font-size: 1.1rem;
+    margin-top: 12px;
+  }
+}
+
+/* Ultra mobile - less than 360px */
+@media (max-width: 360px) {
+  .gallery-rom-section {
+    padding: 24px 10px;
+  }
+
+  .section-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  .rom-gallery-container {
+    padding: 14px 8px;
+    gap: 18px;
   }
 
   .rom-icons-column {
@@ -421,78 +899,47 @@
   }
 
   .rom-icon-item {
-    min-width: 60px;
-    padding: 6px 8px;
+    min-width: 75px;
+    padding: 7px 9px;
+    font-size: 0.7rem;
   }
 
   .carousel-phones-wrapper {
-    gap: 8px;
+    min-height: 330px;
   }
 
   .phone-frame.full-phone {
-    width: 240px;
+    width: 200px;
+    padding: 5px 4px;
   }
 
   .phone-frame.carousel-phone {
     width: 200px;
+    padding: 5px 4px;
   }
 
   .phone-screen {
-    height: 380px;
-  }
-
-  .carousel-arrow {
-    width: 36px;
-    height: 36px;
-  }
-
-  .rom-counter {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .rom-gallery-container {
-    padding: 12px;
-    gap: 15px;
-  }
-
-  .rom-icons-grid {
-    gap: 5px;
-  }
-
-  .rom-icon-item {
-    min-width: 50px;
-    padding: 5px 6px;
-    font-size: 0.75rem;
-  }
-
-  .carousel-phones-wrapper {
-    gap: 5px;
-  }
-
-  .phone-frame.full-phone {
-    width: 220px;
-  }
-
-  .phone-frame.carousel-phone {
-    width: 180px;
-  }
-
-  .phone-screen {
-    height: 350px;
+    height: 433px;
+    border-radius: 26px;
   }
 
   .carousel-arrow {
     width: 32px;
     height: 32px;
-  }
-
-  .rom-counter {
     font-size: 0.8rem;
   }
 
+  .rom-nav-arrows {
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .rom-counter {
+    font-size: 0.7rem;
+    min-width: 60px;
+  }
+
   .rom-info h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }

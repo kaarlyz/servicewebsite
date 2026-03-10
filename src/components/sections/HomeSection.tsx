@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Instagram, Send } from 'lucide-react';
 import './HomeSection.css';
+import './HomeSection-mobile.css';
 
 const HomeSection = () => {
   const [typing, setTyping] = useState('');

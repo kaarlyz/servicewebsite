@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
 import './Recommend-Section.css';
+import './RecommendedSection-mobile.css';
 
 // Definisikan tipe Device
 interface Device {
@@ -17,6 +18,7 @@ interface Device {
   community: string;
   released: string;
   chipset: string;
+  gpu: string;
 }
 
 const RecommendedSection = () => {
@@ -39,7 +41,8 @@ const RecommendedSection = () => {
       romCount: 15,
       community: 'Very Active',
       released: '2019',
-      chipset: 'Snapdragon 855'
+      chipset: 'Snapdragon 855',
+      gpu: 'Adreno 640'
     },
     {
       id: 2,
@@ -54,7 +57,8 @@ const RecommendedSection = () => {
       romCount: 20,
       community: 'Very Active',
       released: '2018',
-      chipset: 'Snapdragon 845'
+      chipset: 'Snapdragon 845',
+      gpu: 'Adreno 630'
     },
     {
       id: 3,
@@ -69,7 +73,8 @@ const RecommendedSection = () => {
       romCount: 18,
       community: 'Very Active',
       released: '2019',
-      chipset: 'Snapdragon 855'
+      chipset: 'Snapdragon 855',
+      gpu: 'Adreno 640'
     },
     {
       id: 4,
@@ -84,7 +89,8 @@ const RecommendedSection = () => {
       romCount: 12,
       community: 'Active',
       released: '2018',
-      chipset: 'Exynos 9810'
+      chipset: 'Exynos 9810',
+      gpu: 'Mali G72 MP18'
     },
     {
       id: 5,
@@ -99,7 +105,8 @@ const RecommendedSection = () => {
       romCount: 10,
       community: 'Active',
       released: '2020',
-      chipset: 'Snapdragon 730G'
+      chipset: 'Snapdragon 730G',
+      gpu: 'Adreno 618'
     },
     {
       id: 6,
@@ -114,7 +121,8 @@ const RecommendedSection = () => {
       romCount: 8,
       community: 'Moderate',
       released: '2018',
-      chipset: 'Exynos 9810'
+      chipset: 'Exynos 9810',
+      gpu: 'Mali G72 MP18'
     }
   ];
 
@@ -141,7 +149,19 @@ const RecommendedSection = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+      transition: { 
+        staggerChildren: 0.08, 
+        delayChildren: 0.1,
+        duration: 0.6
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        duration: 0.4
+      }
     }
   };
 
@@ -150,7 +170,12 @@ const RecommendedSection = () => {
     visible: { 
       opacity: 1,
       y: 0,
-      transition: { type: "spring" as const, damping: 12, stiffness: 100 }
+      transition: { type: "spring" as const, damping: 14, stiffness: 120, mass: 1 }
+    },
+    exit: {
+      opacity: 0,
+      y: -30,
+      transition: { duration: 0.3 }
     }
   };
 
@@ -160,6 +185,8 @@ const RecommendedSection = () => {
       className="recommended-section"
       ref={ref}
       initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
       animate={controls}
       variants={containerVariants}
     >
@@ -178,8 +205,9 @@ const RecommendedSection = () => {
           <motion.div 
             className="device-list"
             initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="device-list-header">
               <h3>Top Devices</h3>
@@ -209,8 +237,9 @@ const RecommendedSection = () => {
           <motion.div 
             className="device-detail-full"
             initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <AnimatePresence mode="wait">
               {selectedDevice ? (
@@ -237,31 +266,31 @@ const RecommendedSection = () => {
                   {/* Specs Grid */}
                   <div className="detail-specs-grid">
                     <div className="spec-card">
-                      <span className="spec-icon">📅</span>
+                      <span className="spec-icon">⚡</span>
                       <div>
-                        <span className="spec-label">Released</span>
-                        <span className="spec-value">{selectedDevice.released}</span>
-                      </div>
-                    </div>
-                    <div className="spec-card">
-                      <span className="spec-icon">⚙️</span>
-                      <div>
-                        <span className="spec-label">Chipset</span>
+                        <span className="spec-label">Processor</span>
                         <span className="spec-value">{selectedDevice.chipset}</span>
                       </div>
                     </div>
                     <div className="spec-card">
-                      <span className="spec-icon">🤖</span>
+                      <span className="spec-icon">🎮</span>
+                      <div>
+                        <span className="spec-label">GPU</span>
+                        <span className="spec-value">{selectedDevice.gpu}</span>
+                      </div>
+                    </div>
+                    <div className="spec-card">
+                      <span className="spec-icon">📱</span>
                       <div>
                         <span className="spec-label">Android</span>
                         <span className="spec-value">{selectedDevice.androidVersion}</span>
                       </div>
                     </div>
                     <div className="spec-card">
-                      <span className="spec-icon">📦</span>
+                      <span className="spec-icon">📅</span>
                       <div>
-                        <span className="spec-label">ROM Count</span>
-                        <span className="spec-value">{selectedDevice.romCount}+ ROMs</span>
+                        <span className="spec-label">Released</span>
+                        <span className="spec-value">{selectedDevice.released}</span>
                       </div>
                     </div>
                   </div>

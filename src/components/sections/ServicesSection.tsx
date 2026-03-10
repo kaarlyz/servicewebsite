@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Smartphone, Unlock, Zap, HardDrive, Shield, Wrench, ChevronLeft, ChevronRight } from 'lucide-react';
 import './ServicesSection.css';
+import './ServicesSection-mobile.css';
 
 const ServicesSection = () => {
   const [activeServiceIndex, setActiveServiceIndex] = useState(0);
@@ -106,7 +107,7 @@ const ServicesSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           <h1>Layanan Kami</h1>
@@ -119,7 +120,7 @@ const ServicesSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           {services.map((service) => {
             const Icon = service.icon;

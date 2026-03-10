@@ -10,6 +10,31 @@
   z-index: 1;
 }
 
+/* Scroll Animations */
+@keyframes slideInUpHome {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInHome {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.home-section > * {
+  animation: slideInUpHome 0.8s ease-out forwards;
+}
+
 .home-container {
   max-width: 900px;
   margin: 0 auto;
@@ -20,6 +45,19 @@
   gap: 30px;
   align-items: flex-start;
   justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 0 16px;
+  }
 }
 
 /* Home Content */
@@ -27,6 +65,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  animation: slideInUpHome 0.8s ease-out 0.1s forwards;
+  opacity: 0;
 }
 
 .home-title {
@@ -41,6 +81,18 @@
   background-clip: text;
 }
 
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 1.8rem;
+  }
+}
+
 .home-subtitle {
   font-size: 1.5rem;
   font-weight: 600;
@@ -49,6 +101,18 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .home-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-subtitle {
+    font-size: 1rem;
+  }
 }
 
 .shield-icon {
@@ -78,6 +142,19 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .home-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-description {
+    font-size: 0.9rem;
+  }
+}
+
 /* Buttons */
 .button-container {
   display: flex;
@@ -86,9 +163,17 @@
   margin-top: 16px;
 }
 
+@media (max-width: 480px) {
+  .button-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   border-radius: 8px;
@@ -101,6 +186,14 @@
   white-space: nowrap;
   color: #a8afb8;
   background: rgba(61, 69, 86, 0.3);
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
 }
 
 .button:hover {

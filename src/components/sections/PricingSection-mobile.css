@@ -1,0 +1,174 @@
+/* PRICING SECTION - MOBILE RESPONSIVE REDESIGN */
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 40px 16px;
+  }
+
+  .pricing-container {
+    padding: 0;
+  }
+
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .pricing-card {
+    padding: 24px 16px;
+  }
+
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+
+  .plan-name {
+    font-size: 1.2rem;
+    margin: 12px 0 8px 0;
+  }
+
+  .plan-description {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-size: 1.8rem;
+  }
+
+  .price-period {
+    font-size: 0.9rem;
+  }
+
+  .price-section {
+    margin-bottom: 20px;
+  }
+
+  .features-list {
+    gap: 8px;
+  }
+
+  .features-list li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-section {
+    padding: 30px 12px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+
+  .section-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  .pricing-grid {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .pricing-card {
+    padding: 20px 14px;
+  }
+
+  .popular-badge {
+    top: -10px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+
+  .plan-name {
+    font-size: 1.1rem;
+    margin: 10px 0 6px 0;
+  }
+
+  .plan-description {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  }
+
+  .price {
+    font-size: 1.6rem;
+  }
+
+  .price-period {
+    font-size: 0.85rem;
+  }
+
+  .price-section {
+    margin-bottom: 16px;
+  }
+
+  .features-list {
+    gap: 6px;
+  }
+
+  .features-list li {
+    font-size: 0.85rem;
+  }
+
+  .pricing-btn {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .pricing-section {
+    padding: 24px 10px;
+  }
+
+  .section-header {
+    margin-bottom: 18px;
+  }
+
+  .section-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .section-header p {
+    font-size: 0.85rem;
+  }
+
+  .pricing-card {
+    padding: 16px 12px;
+  }
+
+  .plan-name {
+    font-size: 1rem;
+  }
+
+  .plan-description {
+    font-size: 0.8rem;
+  }
+
+  .price {
+    font-size: 1.4rem;
+  }
+
+  .features-list li {
+    font-size: 0.8rem;
+  }
+}
