@@ -68,11 +68,13 @@
 
   .carousel-phones-wrapper {
     gap: 12px;
-    min-height: 420px;
+    min-height: auto;
+    max-height: 400px;
+    justify-content: center;
   }
 
   .phone-frame.carousel-phone {
-    width: 220px;
+    width: 210px;
   }
 
   .rom-info h3 {
@@ -134,23 +136,25 @@
   }
 
   .carousel-phones-wrapper {
-    min-height: 350px;
-    gap: 8px;
+    min-height: auto;
+    max-height: 350px;
+    gap: 6px;
+    padding: 0 4px;
   }
 
   .phone-frame.full-phone {
-    width: 220px;
-    padding: 6px 4px;
+    width: 200px;
+    padding: 5px 3px;
   }
 
   .phone-frame.carousel-phone {
-    width: 180px;
-    padding: 6px 4px;
+    width: 160px;
+    padding: 5px 3px;
   }
 
   .phone-screen {
-    height: 476px;
-    border-radius: 28px;
+    height: 430px;
+    border-radius: 26px;
   }
 
   .phone-notch {
@@ -194,19 +198,24 @@
   }
 
   .carousel-phones-wrapper {
-    min-height: 300px;
+    min-height: auto;
+    max-height: 320px;
     gap: 4px;
+    overflow: visible;
   }
 
   .phone-frame.full-phone {
-    width: 190px;
+    width: 170px;
+    padding: 4px 2px;
   }
 
   .phone-frame.carousel-phone {
-    width: 160px;
+    width: 140px;
+    padding: 4px 2px;
   }
 
   .phone-screen {
-    height: 410px;
+    height: 365px;
+    border-radius: 24px;
   }
 }
