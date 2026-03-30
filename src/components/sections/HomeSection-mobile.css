@@ -3,19 +3,19 @@
 @media (max-width: 768px) {
   .home-section {
     padding-top: 100px;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     min-height: auto;
   }
 
   .home-container {
-    padding: 0 20px;
+    padding: 0 24px;
     gap: 20px;
-    align-items: center;
+    align-items: center; /* Profesional Tengah */
     text-align: center;
   }
 
   .home-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     line-height: 1.3;
   }
 
@@ -25,19 +25,22 @@
   }
 
   .home-description {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   .button-container {
     width: 100%;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
   }
 
-  .button {
-    width: 100%;
-    padding: 12px 16px;
+  .button-primary, .button-ghost {
+    width: auto;
+    padding: 12px 24px;
     font-size: 0.95rem;
     justify-content: center;
   }
@@ -45,72 +48,54 @@
 
 @media (max-width: 480px) {
   .home-section {
-    padding-top: 80px;
-    padding-bottom: 24px;
-    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
 
   .home-container {
-    padding: 0 12px;
-    gap: 12px;
+    padding: 0 20px;
+    gap: 16px;
   }
 
   .home-title {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-
-  .shield-icon {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    line-height: 1.25;
   }
 
   .home-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     gap: 8px;
   }
 
   .home-description {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.5;
+    max-width: 100%; 
   }
 
   .button-container {
     width: 100%;
-    gap: 8px;
+    flex-direction: column; /* Ditumpuk rapi di layar kecil */
+    align-items: center;
+    gap: 12px;
   }
 
-  .button {
-    padding: 10px 12px;
-    font-size: 0.85rem;
-    flex: 1;
+  .button-primary, .button-ghost {
+    width: 100%; /* Lebar seimbang di HP */
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    justify-content: center;
   }
 }
 
 @media (max-width: 360px) {
   .home-section {
-    padding-top: 24px;
-    padding-bottom: 20px;
+    padding-top: 90px;
+    padding-bottom: 60px;
   }
 
   .home-container {
-    padding: 0 10px;
-    gap: 10px;
-  }
-
-  .home-title {
-    font-size: 1.4rem;
-  }
-
-  .home-subtitle {
-    font-size: 0.85rem;
-  }
-
-  .home-description {
-    font-size: 0.8rem;
-  }
-
-  .button {
-    padding: 8px 10px;
-    font-size: 0.8rem;
+    padding: 0 16px;
+    gap: 14px;
   }
 }

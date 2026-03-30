@@ -87,11 +87,11 @@ const PricingSection = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5, ease: 'easeOut' as const }
     }
   };
 
@@ -102,11 +102,11 @@ const PricingSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Harga Layanan</h1>
-          <p>Pilih paket yang sesuai dengan kebutuhan Anda</p>
+          <h1 className="font-heading text-gradient">Harga Layanan</h1>
+          <p className="font-mono">Pilih paket yang sesuai dengan kebutuhan Anda</p>
         </motion.div>
 
         <motion.div 
@@ -114,7 +114,7 @@ const PricingSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {pricingPlans.map((plan) => (
             <motion.div
@@ -124,17 +124,17 @@ const PricingSection = () => {
               whileHover={{ y: -8 }}
             >
               {plan.popular && (
-                <div className="popular-badge">POPULAR</div>
+                <div className="popular-badge font-mono">POPULAR</div>
               )}
-              <h3 className="plan-name">{plan.name}</h3>
-              <p className="plan-description">{plan.description}</p>
+              <h3 className="plan-name font-heading">{plan.name}</h3>
+              <p className="plan-description font-body">{plan.description}</p>
               
               <div className="price-section">
-                <div className="price">{plan.price}</div>
-                <span className="price-period">/service</span>
+                <div className={`price font-mono ${plan.popular ? 'text-gradient' : ''}`}>{plan.price}</div>
+                <span className="price-period font-mono">/service</span>
               </div>
 
-              <ul className="features-list">
+              <ul className="features-list font-body">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className={feature.included ? 'included' : 'excluded'}>
                     {feature.included ? (
@@ -150,7 +150,7 @@ const PricingSection = () => {
               <motion.a
                 href={plan.isCustom ? 'https://wa.me/your_number' : '#kontak'}
                 target={plan.isCustom ? '_blank' : '_self'}
-                className={`pricing-button ${plan.isCustom ? 'custom-button' : ''}`}
+                className={`pricing-button font-body ${plan.popular ? 'button-primary' : 'button-ghost'}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -168,24 +168,26 @@ const PricingSection = () => {
           viewport={{ once: true }}
         >
           <motion.div
-            className="mobile-pricing-card"
+            className={`mobile-pricing-card ${pricingPlans[mobileActiveIndex].popular ? 'popular' : ''}`}
             key={`mobile-${mobileActiveIndex}`}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
           >
             {pricingPlans[mobileActiveIndex].popular && (
-              <div className="popular-badge">POPULAR</div>
+              <div className="popular-badge font-mono">POPULAR</div>
             )}
-            <h3 className="plan-name">{pricingPlans[mobileActiveIndex].name}</h3>
-            <p className="plan-description">{pricingPlans[mobileActiveIndex].description}</p>
+            <h3 className="plan-name font-heading">{pricingPlans[mobileActiveIndex].name}</h3>
+            <p className="plan-description font-body">{pricingPlans[mobileActiveIndex].description}</p>
             
             <div className="price-section">
-              <div className="price">{pricingPlans[mobileActiveIndex].price}</div>
-              <span className="price-period">/service</span>
+              <div className={`price font-mono ${pricingPlans[mobileActiveIndex].popular ? 'text-gradient' : ''}`}>
+                {pricingPlans[mobileActiveIndex].price}
+              </div>
+              <span className="price-period font-mono">/service</span>
             </div>
 
-            <ul className="features-list">
+            <ul className="features-list font-body">
               {pricingPlans[mobileActiveIndex].features.map((feature, idx) => (
                 <li key={idx} className={feature.included ? 'included' : 'excluded'}>
                   {feature.included ? (
@@ -201,7 +203,7 @@ const PricingSection = () => {
             <motion.a
               href={pricingPlans[mobileActiveIndex].isCustom ? 'https://wa.me/your_number' : '#kontak'}
               target={pricingPlans[mobileActiveIndex].isCustom ? '_blank' : '_self'}
-              className={`pricing-button ${pricingPlans[mobileActiveIndex].isCustom ? 'custom-button' : ''}`}
+              className={`pricing-button font-body ${pricingPlans[mobileActiveIndex].popular ? 'button-primary' : 'button-ghost'}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -221,7 +223,7 @@ const PricingSection = () => {
               <ChevronLeft size={20} />
             </motion.button>
 
-            <span className="carousel-counter">
+            <span className="carousel-counter font-mono">
               {mobileActiveIndex + 1} / {pricingPlans.length}
             </span>
 

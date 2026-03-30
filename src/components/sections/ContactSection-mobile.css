@@ -2,7 +2,7 @@
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 40px 16px;
+    padding: 60px 20px;
   }
 
   .contact-container {
@@ -10,131 +10,184 @@
   }
 
   .section-header {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
+    text-align: center !important;
+    /* Standar header proporsional di mobile */
   }
 
   .section-header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 12px;
   }
 
   .section-header p {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   .contact-content {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    display: flex !important;
+    flex-direction: column !important;
+    /* Urutan rill yang logis */
+    gap: 40px;
     margin-top: 30px;
   }
 
   .contact-info {
-    gap: 28px;
+    gap: 20px;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
   }
 
+  /* List item profesional: Berjejer vertikal mulus layaknya menu aplikasi */
   .info-items {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 16px;
   }
 
   .contact-item {
-    padding: 16px 14px;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: row !important;
+    /* Ikon selalu di kiri, teks di kanan */
+    align-items: center !important;
+    text-align: left !important;
+    padding: 20px 24px !important;
+    gap: 16px !important;
+    border-radius: 16px !important;
+    background: var(--color-dark-matter) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 
   .item-icon {
-    width: 44px;
-    height: 44px;
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+    /* Mencegah ikon menyusut */
+  }
+
+  .item-content {
+    flex: 1;
   }
 
   .item-content h3 {
-    font-size: 1rem;
-    margin-bottom: 6px;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
   }
 
   .item-content p {
     font-size: 0.9rem;
+    color: var(--color-stardust) !important;
   }
 
   .social-media {
-    padding: 16px;
+    padding: 24px;
+    text-align: center !important;
+    background: var(--color-dark-matter) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 
   .social-media h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 16px;
   }
 
+  .social-icons {
+    justify-content: center !important;
+  }
+
   .social-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.3rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .contact-form {
+    padding: 30px 24px 24px 24px !important;
+    /* Padding bawah lebih kecil */
+    background: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 0 !important;
+    /* Hapus margin karena sudah ada gap dari form */
+    width: 100% !important;
   }
 
   .form-group label {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .form-group input,
   .form-group textarea {
-    font-size: 0.9rem;
-    padding: 10px 12px;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-group input {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    border-radius: 10px;
+    height: 48px;
+    /* Pastikan tinggi input seragam */
+  }
+
+  .form-group textarea {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    border-radius: 10px;
+    min-height: 100px;
+    /* Batasi tinggi textarea agar tidak makan tempat */
+    max-height: 120px;
   }
 
   .submit-btn {
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    padding: 14px 24px;
+    font-size: 1rem;
+    width: 100% !important;
+    border-radius: 10px;
+    margin-top: 4px !important;
   }
 }
 
 @media (max-width: 480px) {
   .contact-section {
-    padding: 30px 12px;
-  }
-
-  .section-header {
-    margin-bottom: 20px;
+    padding: 40px 16px;
   }
 
   .section-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .section-header p {
-    font-size: 0.9rem;
+    font-size: 1.8rem;
   }
 
   .contact-content {
-    gap: 18px;
+    gap: 30px;
     margin-top: 24px;
   }
 
-  .contact-info {
-    gap: 20px;
-  }
-
-  .info-items {
-    gap: 12px;
-  }
-
   .contact-item {
-    padding: 12px 10px;
-    gap: 10px;
+    padding: 16px 20px !important;
+    gap: 12px !important;
   }
 
   .item-icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .item-content h3 {
-    font-size: 0.95rem;
-    margin-bottom: 4px;
+    font-size: 1rem;
   }
 
   .item-content p {
@@ -142,77 +195,67 @@
   }
 
   .social-media {
-    padding: 12px;
-  }
-
-  .social-media h3 {
-    font-size: 0.95rem;
-    margin-bottom: 12px;
-  }
-
-  .social-icons {
-    gap: 10px;
+    padding: 20px;
   }
 
   .social-icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     font-size: 1.1rem;
   }
 
+  .contact-form {
+    padding: 24px 20px !important;
+  }
+
   .form-title {
-    font-size: 1rem;
-    margin-bottom: 14px;
+    font-size: 1.1rem;
   }
 
   .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    width: 100% !important;
   }
 
   .form-group label {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .form-group input,
   .form-group textarea {
-    font-size: 0.85rem;
-    padding: 8px 10px;
-  }
-
-  .form-group textarea {
-    min-height: 100px;
+    font-size: 0.9rem;
+    padding: 12px 14px;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .submit-btn {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+    padding: 12px 16px;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 360px) {
   .contact-section {
-    padding: 24px 10px;
+    padding: 30px 12px;
   }
 
   .section-header h1 {
-    font-size: 1.3rem;
-  }
-
-  .contact-content {
-    gap: 14px;
+    font-size: 1.5rem;
   }
 
   .contact-item {
-    padding: 10px 8px;
+    padding: 14px 16px !important;
+    gap: 10px !important;
   }
 
   .item-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .item-content h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .item-content p {
@@ -220,13 +263,12 @@
   }
 
   .social-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     font-size: 1rem;
   }
 
-  .form-group input,
-  .form-group textarea {
-    font-size: 0.8rem;
+  .contact-form {
+    padding: 20px 16px !important;
   }
 }

@@ -21,7 +21,7 @@ const GalleryRomSection = () => {
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.currentTarget;
-    img.onerror = null;   
+    img.onerror = null;
     img.src = getPlaceholder('Gambar error');
   };
 
@@ -120,28 +120,28 @@ const GalleryRomSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Custom ROM Gallery</h1>
-          <p>Lihat tampilan berbagai custom ROM pilihan</p>
+          <h1 className="font-heading text-gradient">Custom ROM Gallery</h1>
+          <p className="font-mono">Lihat tampilan berbagai custom ROM pilihan</p>
         </motion.div>
 
         <motion.div
           className="rom-gallery-container"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           {/* Left Column: ROM Selection */}
           <div className="rom-icons-column">
-            <h3 className="rom-icons-title">Pilih ROM</h3>
+            <h3 className="rom-icons-title font-heading">Pilih ROM</h3>
             <div className="rom-icons-grid">
               {romData.map((rom, idx) => (
                 <motion.button
                   key={idx}
-                  className={`rom-icon-item ${activeRomIndex === idx ? 'active' : ''}`}
+                  className={`rom-icon-item font-mono ${activeRomIndex === idx ? 'active' : ''}`}
                   onClick={() => handleSelectRom(idx)}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
@@ -160,32 +160,32 @@ const GalleryRomSection = () => {
               <motion.div
                 key={`prev-${activeRomIndex}-${prevImageIndex}`}
                 className="phone-carousel-side prev-phone"
-                initial={{ 
-                  opacity: 0, 
-                  x: -80, 
-                  scale: 0.6, 
+                initial={{
+                  opacity: 0,
+                  x: -80,
+                  scale: 0.6,
                   rotateY: -60,
                   rotateX: 10,
                   z: -200
                 }}
-                animate={{ 
-                  opacity: 0.2, 
-                  x: -40, 
-                  scale: 0.75, 
+                animate={{
+                  opacity: 0.2,
+                  x: -40,
+                  scale: 0.75,
                   rotateY: -35,
                   rotateX: 0,
                   z: 0
                 }}
-                exit={{ 
-                  opacity: 0, 
-                  x: -80, 
-                  scale: 0.6, 
+                exit={{
+                  opacity: 0,
+                  x: -80,
+                  scale: 0.6,
                   rotateY: -60,
                   rotateX: 10,
                   z: -200
                 }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
                 style={{ transformStyle: 'preserve-3d' }}
@@ -208,27 +208,27 @@ const GalleryRomSection = () => {
                 <motion.div
                   key={`center-${activeRomIndex}-${activeImageIndex}`}
                   className="phone-carousel-center"
-                  initial={{ 
-                    opacity: 0, 
-                    rotateY: 120, 
+                  initial={{
+                    opacity: 0,
+                    rotateY: 120,
                     rotateX: -30,
                     scale: 0.7,
                     z: -300
                   }}
-                  animate={{ 
-                    opacity: 1, 
-                    rotateY: 0, 
+                  animate={{
+                    opacity: 1,
+                    rotateY: 0,
                     rotateX: 0,
                     scale: 1,
                     z: 0,
-                    transition: { 
-                      duration: 0.9, 
+                    transition: {
+                      duration: 0.9,
                       ease: [0.25, 0.46, 0.45, 0.94]
-                    } 
+                    }
                   }}
-                  exit={{ 
-                    opacity: 0, 
-                    rotateY: -120, 
+                  exit={{
+                    opacity: 0,
+                    rotateY: -120,
                     rotateX: 30,
                     scale: 0.7,
                     z: -300
@@ -253,32 +253,32 @@ const GalleryRomSection = () => {
               <motion.div
                 key={`next-${activeRomIndex}-${nextImageIndex}`}
                 className="phone-carousel-side next-phone"
-                initial={{ 
-                  opacity: 0, 
-                  x: 80, 
-                  scale: 0.6, 
+                initial={{
+                  opacity: 0,
+                  x: 80,
+                  scale: 0.6,
                   rotateY: 60,
                   rotateX: 10,
                   z: -200
                 }}
-                animate={{ 
-                  opacity: 0.2, 
-                  x: 40, 
-                  scale: 0.75, 
+                animate={{
+                  opacity: 0.2,
+                  x: 40,
+                  scale: 0.75,
                   rotateY: 35,
                   rotateX: 0,
                   z: 0
                 }}
-                exit={{ 
-                  opacity: 0, 
-                  x: 80, 
-                  scale: 0.6, 
+                exit={{
+                  opacity: 0,
+                  x: 80,
+                  scale: 0.6,
                   rotateY: 60,
                   rotateX: 10,
                   z: -200
                 }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
                 style={{ transformStyle: 'preserve-3d' }}
@@ -309,7 +309,7 @@ const GalleryRomSection = () => {
                 <ChevronLeft size={20} />
               </motion.button>
 
-              <span className="rom-counter">
+              <span className="rom-counter font-mono">
                 {activeImageIndex + 1} / {romData[activeRomIndex].images.length}
               </span>
 
@@ -332,7 +332,7 @@ const GalleryRomSection = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
-              <h3>{romData[activeRomIndex].name}</h3>
+              <h3 className="font-heading text-gradient">{romData[activeRomIndex].name}</h3>
             </motion.div>
           </div>
         </motion.div>

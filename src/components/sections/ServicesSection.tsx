@@ -74,11 +74,11 @@ const ServicesSection = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5, ease: 'easeOut' as const }
     },
     exit: { opacity: 0, y: -20 }
   };
@@ -107,11 +107,11 @@ const ServicesSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Layanan Kami</h1>
-          <p>Solusi lengkap untuk kebutuhan smartphone Anda</p>
+          <h1 className="font-heading text-gradient">Layanan Kami</h1>
+          <p className="font-mono">Solusi lengkap untuk kebutuhan smartphone Anda</p>
         </motion.div>
 
         {/* Desktop Grid */}
@@ -120,7 +120,7 @@ const ServicesSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {services.map((service) => {
             const Icon = service.icon;
@@ -131,12 +131,18 @@ const ServicesSection = () => {
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
               >
+                {/* Decorative corners */}
+                <div className="corner-accent top-left"></div>
+                <div className="corner-accent top-right"></div>
+                <div className="corner-accent bottom-left"></div>
+                <div className="corner-accent bottom-right"></div>
+                
                 <div className="service-icon-wrapper">
-                  <Icon size={40} className="service-icon" />
+                  <Icon size={36} className="service-icon" />
                 </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <span className="service-price">{service.price}</span>
+                <h3 className="font-heading">{service.title}</h3>
+                <p className="font-body">{service.description}</p>
+                <span className="service-price font-mono">{service.price}</span>
               </motion.div>
             );
           })}
@@ -153,7 +159,7 @@ const ServicesSection = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="carousel-service-card"
               >
                 {(() => {
@@ -161,12 +167,18 @@ const ServicesSection = () => {
                   const Icon = service.icon;
                   return (
                     <div className="service-card carousel-card">
+                      {/* Decorative corners */}
+                      <div className="corner-accent top-left"></div>
+                      <div className="corner-accent top-right"></div>
+                      <div className="corner-accent bottom-left"></div>
+                      <div className="corner-accent bottom-right"></div>
+                      
                       <div className="service-icon-wrapper">
-                        <Icon size={50} className="service-icon" />
+                        <Icon size={44} className="service-icon" />
                       </div>
-                      <h3>{service.title}</h3>
-                      <p>{service.description}</p>
-                      <span className="service-price">{service.price}</span>
+                      <h3 className="font-heading">{service.title}</h3>
+                      <p className="font-body">{service.description}</p>
+                      <span className="service-price font-mono">{service.price}</span>
                     </div>
                   );
                 })()}
@@ -192,6 +204,10 @@ const ServicesSection = () => {
                   key={index}
                   className={`indicator ${index === activeServiceIndex ? 'active' : ''}`}
                   whileHover={{ scale: 1.2 }}
+                  onClick={() => {
+                     setDirection(index > activeServiceIndex ? 1 : -1);
+                     setActiveServiceIndex(index);
+                  }}
                 />
               ))}
             </div>
@@ -207,7 +223,7 @@ const ServicesSection = () => {
             </motion.button>
           </div>
 
-          <p className="carousel-counter">{activeServiceIndex + 1} / {services.length}</p>
+          <p className="carousel-counter font-mono">{activeServiceIndex + 1} / {services.length}</p>
         </div>
       </div>
     </section>

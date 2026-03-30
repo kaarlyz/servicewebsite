@@ -1,37 +1,21 @@
 /* Gallery ROM Section */
 .gallery-rom-section {
-  padding: 60px 30px;
-  background: linear-gradient(180deg, #0f1219 0%, #1a202c 100%);
+  padding: 100px 35px;
+  background-color: var(--color-void);
   overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1200px) {
   .gallery-rom-section {
-    padding: 50px 24px;
+    padding: 80px 28px;
   }
 }
 
 @media (max-width: 768px) {
   .gallery-rom-section {
-    padding: 45px 16px;
-  }
-}
-
-@media (max-width: 640px) {
-  .gallery-rom-section {
-    padding: 35px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-rom-section {
-    padding: 30px 10px;
-  }
-}
-
-@media (max-width: 360px) {
-  .gallery-rom-section {
-    padding: 24px 8px;
+    padding: 60px 20px;
   }
 }
 
@@ -41,6 +25,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -52,6 +37,7 @@
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -63,6 +49,7 @@
     opacity: 0;
     transform: translateX(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -85,14 +72,9 @@
 }
 
 .section-header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  color: #d4d9e0;
   margin: 0 0 16px 0;
-  background: linear-gradient(135deg, #a8afb8 0%, #7a8291 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.5px;
 }
 
@@ -117,7 +99,7 @@
 
 .section-header p {
   font-size: 1.1rem;
-  color: #a8afb8;
+  color: var(--color-stardust);
   margin: 0;
 }
 
@@ -174,10 +156,10 @@
 
 /* Left Column - ROM Selection */
 .rom-icons-column {
-  background: #1a202c;
-  border-radius: 16px;
+  background-color: var(--color-dark-matter);
+  border-radius: var(--radius-2xl);
   padding: 22px;
-  border: 1px solid rgba(45, 55, 72, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   height: fit-content;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   animation: slideInLeftGallery 0.8s ease-out 0.3s backwards;
@@ -203,12 +185,12 @@
 }
 
 .rom-icons-title {
-  color: #d4d9e0;
-  font-size: 1rem;
+  color: var(--color-light);
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0 0 15px 0;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(61, 69, 86, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   letter-spacing: 0.3px;
 }
 
@@ -269,22 +251,22 @@
 }
 
 .rom-icons-grid::-webkit-scrollbar-thumb {
-  background: rgba(61, 69, 86, 0.5);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
 .rom-icons-grid::-webkit-scrollbar-thumb:hover {
-  background: rgba(61, 69, 86, 0.7);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .rom-icon-item {
   padding: 10px 12px;
-  background: #1a202c;
-  border: 1px solid rgba(45, 55, 72, 0.5);
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  color: #a8afb8;
+  transition: var(--transition-normal);
+  color: var(--color-stardust);
   font-size: 0.85rem;
   font-weight: 600;
   text-align: center;
@@ -318,16 +300,17 @@
 }
 
 .rom-icon-item:hover {
-  border-color: rgba(61, 69, 86, 0.3);
-  background: #2d3748;
+  border-color: rgba(247, 147, 26, 0.2);
+  background: rgba(247, 147, 26, 0.05);
   transform: translateY(-2px);
+  color: var(--color-light);
 }
 
 .rom-icon-item.active {
-  border-color: rgba(61, 69, 86, 0.5);
-  background: rgba(61, 69, 86, 0.1);
-  color: #d4d9e0;
-  box-shadow: 0 0 12px rgba(61, 69, 86, 0.15);
+  border-color: var(--color-bitcoin);
+  background: rgba(247, 147, 26, 0.1);
+  color: var(--color-bitcoin);
+  box-shadow: 0 0 15px rgba(247, 147, 26, 0.2);
 }
 
 /* Right Column - Phone Display */
@@ -402,6 +385,7 @@
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .phone-carousel-center {
@@ -460,7 +444,7 @@
   background: #111;
   border-radius: 39px;
   overflow: visible;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6),
+  box-shadow: 0 20px 45px rgba(247, 147, 26, 0.15),
     inset 0 0 0 1.5px #333,
     inset 0 0 0 3px #222;
   border: none;
@@ -562,23 +546,23 @@
 }
 
 .carousel-arrow {
-  width: 44px;
-  height: 44px;
-  background: rgba(61, 69, 86, 0.2);
-  border: 1px solid rgba(61, 69, 86, 0.4);
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #d4d9e0;
+  color: var(--color-light);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .carousel-arrow:hover {
-  background: rgba(61, 69, 86, 0.4);
-  border-color: rgba(61, 69, 86, 0.6);
-  color: #d4d9e0;
+  background: rgba(247, 147, 26, 0.1);
+  border-color: var(--color-bitcoin);
+  color: var(--color-bitcoin);
 }
 
 .carousel-arrow:active {
@@ -586,11 +570,12 @@
 }
 
 .rom-counter {
-  color: #a8afb8;
+  color: var(--color-stardust);
   font-size: 0.95rem;
   font-weight: 500;
   min-width: 70px;
   text-align: center;
+  letter-spacing: 2px;
 }
 
 /* ROM Info */
@@ -601,11 +586,10 @@
 }
 
 .rom-info h3 {
-  color: #d4d9e0;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.5px;
 }
 
 /* Responsive Design */

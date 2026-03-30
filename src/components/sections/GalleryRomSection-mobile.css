@@ -1,221 +1,225 @@
 /* GALLERY ROM SECTION - MOBILE RESPONSIVE REDESIGN */
 
+@media (max-width: 1024px) {
+  .carousel-phones-wrapper {
+    position: relative !important;
+  }
+
+  .phone-carousel-side {
+    position: absolute !important;
+    top: 0;
+  }
+
+  .phone-carousel-side.prev-phone {
+    left: 10% !important;
+  }
+
+  .phone-carousel-side.next-phone {
+    right: 10% !important;
+  }
+}
+
 @media (max-width: 768px) {
   .gallery-rom-section {
-    padding: 40px 16px;
-  }
-
-  .gallery-container {
-    padding: 0;
-  }
-
-  .section-header {
-    margin-bottom: 28px;
-    text-align: center;
-  }
-
-  .section-header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
-  }
-
-  .section-header p {
-    font-size: 0.95rem;
+    padding: 60px 20px;
+    overflow-x: hidden;
   }
 
   .rom-gallery-container {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding: 20px !important;
+    align-items: start !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .rom-icons-column {
-    padding: 12px;
-    max-height: none;
+    padding: 16px !important;
+    max-height: none !important;
+    z-index: 20 !important;
+    position: relative !important;
+    background: var(--color-dark-matter) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    /* Mengurung grid agar scroll berjalan di dalamnya */
   }
 
   .rom-icons-grid {
-    flex-direction: row;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    max-height: none;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    /* Wajib agar tidak terpotong */
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    padding-bottom: 15px !important;
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .rom-icon-item {
-    flex: 1;
-    min-width: 70px;
-    padding: 8px 10px;
-    font-size: 0.8rem;
-  }
-
-  .rom-icons-title {
-    font-size: 0.95rem;
-    margin-bottom: 12px;
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    /* Supaya teks ROM muat sempurna */
+    padding: 8px 16px !important;
   }
 
   .phone-mockup-column {
-    width: 100%;
+    width: 100% !important;
+    padding-top: 10px !important;
+    position: relative !important;
   }
 
-  .phone-frame.full-phone {
-    width: 260px;
-  }
-
-  .phone-screen {
-    height: 560px;
-  }
-
+  /* KUNCI UTAMA: Bounding box di-lock ukurannya */
   .carousel-phones-wrapper {
-    gap: 12px;
-    min-height: auto;
-    max-height: 400px;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    width: 100% !important;
+    min-height: 540px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* HP Kiri dan Kanan dicabut dari arus flex agar tidak merusak lebar! */
+  .phone-carousel-side {
+    position: absolute !important;
+    top: 20px !important;
+    z-index: 1 !important;
+  }
+
+  /* Posisi fixed di persentase agar selalu pas, lalu Framer akan menggeser x:-40/40 */
+  .phone-carousel-side.prev-phone {
+    left: 2% !important;
+  }
+
+  .phone-carousel-side.next-phone {
+    right: 2% !important;
+  }
+
+  /* HP Tengah tidak bergerak, selalu solid di center */
+  .phone-carousel-center {
+    position: relative !important;
+    z-index: 10 !important;
   }
 
   .phone-frame.carousel-phone {
-    width: 210px;
+    width: 170px !important;
+  }
+
+  .phone-frame.full-phone {
+    width: 230px !important;
+  }
+
+  .phone-screen {
+    height: 480px !important;
   }
 
   .rom-info h3 {
-    font-size: 1.1rem;
+    margin-top: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .phone-carousel-side.prev-phone {
+    left: -5% !important;
   }
 
-  .carousel-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+  .phone-carousel-side.next-phone {
+    right: -5% !important;
   }
 
-  .rom-counter {
-    font-size: 0.85rem;
+  .phone-frame.full-phone {
+    width: 210px !important;
+  }
+
+  .phone-frame.carousel-phone {
+    width: 150px !important;
+  }
+
+  .phone-screen {
+    height: 440px !important;
+  }
+
+  .carousel-phones-wrapper {
+    min-height: 500px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .gallery-rom-section {
-    padding: 30px 12px;
-  }
-
-  .section-header {
-    margin-bottom: 20px;
-  }
-
-  .section-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .section-header p {
-    font-size: 0.9rem;
-  }
-
-  .rom-gallery-container {
-    gap: 16px;
-    padding: 12px;
-  }
-
   .rom-icons-column {
-    padding: 10px;
-    border-radius: 12px;
-  }
-
-  .rom-icons-grid {
-    gap: 6px;
-  }
-
-  .rom-icon-item {
-    min-width: 60px;
-    padding: 7px 8px;
-    font-size: 0.75rem;
-  }
-
-  .rom-icons-title {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+    padding: 10px !important;
   }
 
   .carousel-phones-wrapper {
-    min-height: auto;
-    max-height: 350px;
-    gap: 6px;
-    padding: 0 4px;
+    min-height: 440px !important;
+  }
+
+  /* Di layar kecil, HP sisi ditaruh lebih ke tengah (persentase besar) */
+  .phone-carousel-side.prev-phone {
+    left: 8% !important;
+  }
+
+  .phone-carousel-side.next-phone {
+    right: 8% !important;
   }
 
   .phone-frame.full-phone {
-    width: 200px;
-    padding: 5px 3px;
+    width: 190px !important;
+    padding: 6px 4px !important;
   }
 
   .phone-frame.carousel-phone {
-    width: 160px;
-    padding: 5px 3px;
+    width: 130px !important;
+    padding: 6px 4px !important;
   }
 
   .phone-screen {
-    height: 430px;
-    border-radius: 26px;
+    height: 400px !important;
+    border-radius: 24px !important;
   }
 
   .phone-notch {
-    width: 100px;
-    height: 20px;
-  }
-
-  .rom-info h3 {
-    font-size: 1rem;
-  }
-
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-  }
-
-  .rom-counter {
-    font-size: 0.8rem;
-    min-width: 60px;
-  }
-
-  .rom-nav-arrows {
-    gap: 12px;
-    padding: 10px 0;
+    width: 80px !important;
+    height: 16px !important;
   }
 }
 
 @media (max-width: 360px) {
-  .gallery-rom-section {
-    padding: 24px 10px;
+
+  /* Di layar super kecil, HP sisi lebih dimajukan lagi */
+  .phone-carousel-side.prev-phone {
+    left: 5% !important;
   }
 
-  .section-header h1 {
-    font-size: 1.3rem;
-  }
-
-  .rom-gallery-container {
-    gap: 12px;
-    padding: 10px;
+  .phone-carousel-side.next-phone {
+    right: 5% !important;
   }
 
   .carousel-phones-wrapper {
-    min-height: auto;
-    max-height: 320px;
-    gap: 4px;
-    overflow: visible;
+    min-height: 380px !important;
   }
 
   .phone-frame.full-phone {
-    width: 170px;
-    padding: 4px 2px;
+    width: 170px !important;
+    padding: 5px 3px !important;
   }
 
   .phone-frame.carousel-phone {
-    width: 140px;
-    padding: 4px 2px;
+    width: 120px !important;
   }
 
   .phone-screen {
-    height: 365px;
-    border-radius: 24px;
+    height: 350px !important;
+    border-radius: 20px !important;
+  }
+
+  .phone-notch {
+    width: 70px !important;
   }
 }

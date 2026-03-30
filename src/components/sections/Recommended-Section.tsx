@@ -186,32 +186,32 @@ const RecommendedSection = () => {
       ref={ref}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       animate={controls}
       variants={containerVariants}
     >
       <div className="container">
         {/* Header */}
         <motion.div className="section-header" variants={headerVariants}>
-          <h2 className="section-title">Top Recommended Devices</h2>
-          <p className="section-description">
+          <h2 className="section-title font-heading text-gradient">Top Recommended Devices</h2>
+          <p className="section-description font-mono">
             Discover the best devices for custom ROMs, ranked by community support and stability
           </p>
         </motion.div>
 
         {/* Main Content */}
-        <div className="recommend-content">
+        <div className="recommend-content glass-panel">
           {/* Left Side */}
           <motion.div 
             className="device-list"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="device-list-header">
-              <h3>Top Devices</h3>
-              <p>Click on any device to see details</p>
+              <h3 className="font-heading">Top Devices</h3>
+              <p className="font-mono">Click on any device to see details</p>
             </div>
             <div className="device-list-items">
               {recommendedDevices.map((device) => (
@@ -224,10 +224,10 @@ const RecommendedSection = () => {
                 >
                   <img src={device.logo} alt={device.brand} className="list-item-logo" />
                   <div className="list-item-info">
-                    <h4 className="list-item-brand">{device.brand}</h4>
-                    <p className="list-item-model">{device.model}</p>
+                    <h4 className="list-item-brand font-heading">{device.brand}</h4>
+                    <p className="list-item-model font-mono">{device.model}</p>
                   </div>
-                  <div className="list-item-rank">#{device.rank}</div>
+                  <div className="list-item-rank font-mono">#{device.rank}</div>
                 </motion.div>
               ))}
             </div>
@@ -238,7 +238,7 @@ const RecommendedSection = () => {
             className="device-detail-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <AnimatePresence mode="wait">
@@ -257,9 +257,9 @@ const RecommendedSection = () => {
                       <img src={selectedDevice.logo} alt={selectedDevice.brand} className="detail-logo-full" />
                     </div>
                     <div className="detail-title-full">
-                      <h2>{selectedDevice.brand}</h2>
-                      <p>{selectedDevice.fullModel}</p>
-                      <div className="detail-rank-badge">#{selectedDevice.rank} Top Device</div>
+                      <h2 className="font-heading text-gradient">{selectedDevice.brand}</h2>
+                      <p className="font-body">{selectedDevice.fullModel}</p>
+                      <div className="detail-rank-badge font-mono">#{selectedDevice.rank} Top Device</div>
                     </div>
                   </div>
 
@@ -268,39 +268,39 @@ const RecommendedSection = () => {
                     <div className="spec-card">
                       <span className="spec-icon">⚡</span>
                       <div>
-                        <span className="spec-label">Processor</span>
-                        <span className="spec-value">{selectedDevice.chipset}</span>
+                        <span className="spec-label font-mono">Processor</span>
+                        <span className="spec-value font-body">{selectedDevice.chipset}</span>
                       </div>
                     </div>
                     <div className="spec-card">
                       <span className="spec-icon">🎮</span>
                       <div>
-                        <span className="spec-label">GPU</span>
-                        <span className="spec-value">{selectedDevice.gpu}</span>
+                        <span className="spec-label font-mono">GPU</span>
+                        <span className="spec-value font-body">{selectedDevice.gpu}</span>
                       </div>
                     </div>
                     <div className="spec-card">
                       <span className="spec-icon">📱</span>
                       <div>
-                        <span className="spec-label">Android</span>
-                        <span className="spec-value">{selectedDevice.androidVersion}</span>
+                        <span className="spec-label font-mono">Android</span>
+                        <span className="spec-value font-body">{selectedDevice.androidVersion}</span>
                       </div>
                     </div>
                     <div className="spec-card">
                       <span className="spec-icon">📅</span>
                       <div>
-                        <span className="spec-label">Released</span>
-                        <span className="spec-value">{selectedDevice.released}</span>
+                        <span className="spec-label font-mono">Released</span>
+                        <span className="spec-value font-body">{selectedDevice.released}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* ROM Section */}
                   <div className="rom-section-full">
-                    <h4>Supported Custom ROMs</h4>
+                    <h4 className="font-heading">Supported Custom ROMs</h4>
                     <div className="rom-tags-full">
                       {selectedDevice.romSupport.map((rom: string, idx: number) => (
-                        <span key={idx} className="rom-tag-full">{rom}</span>
+                        <span key={idx} className="rom-tag-full font-mono">{rom}</span>
                       ))}
                     </div>
                   </div>
@@ -308,29 +308,29 @@ const RecommendedSection = () => {
                   {/* Info Bar */}
                   <div className="info-bar">
                     <div className="info-item">
-                      <span className="info-label">Difficulty Level</span>
-                      <span className={`difficulty-badge-full ${getDifficultyClass(selectedDevice.difficulty)}`}>
+                      <span className="info-label font-mono">Difficulty Level</span>
+                      <span className={`difficulty-badge-full font-mono ${getDifficultyClass(selectedDevice.difficulty)}`}>
                         {selectedDevice.difficulty}
                       </span>
                     </div>
                     <div className="info-item">
-                      <span className="info-label">Community</span>
-                      <span className="community-value">{selectedDevice.community}</span>
+                      <span className="info-label font-mono">Community</span>
+                      <span className="community-value font-body">{selectedDevice.community}</span>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
                   <div className="action-buttons">
-                    <button className="action-btn-full guide-btn">
+                    <button className="action-btn-full guide-btn font-mono">
                       Installation Guide
                     </button>
-                    <button className="action-btn-full download-btn">
+                    <button className="action-btn-full download-btn font-mono">
                       Download ROMs
                     </button>
                   </div>
                 </motion.div>
               ) : (
-                <div className="empty-state-full">
+                <div className="empty-state-full font-mono">
                   Select a device from the list
                 </div>
               )}

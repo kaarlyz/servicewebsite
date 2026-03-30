@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 import './TestimonialsSection.css';
@@ -43,6 +44,36 @@ const TestimonialsSection = () => {
     }
   ];
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    let animationFrameId: number;
+
+    const scroll = () => {
+      if (scrollRef.current && scrollRef.current.children.length > testimonials.length) {
+        scrollRef.current.scrollLeft += 1; 
+        
+        const firstSetItem = scrollRef.current.children[0] as HTMLElement;
+        const secondSetItem = scrollRef.current.children[testimonials.length] as HTMLElement;
+        
+        if (firstSetItem && secondSetItem) {
+          const setWidth = secondSetItem.offsetLeft - firstSetItem.offsetLeft;
+          if (scrollRef.current.scrollLeft >= setWidth) {
+            scrollRef.current.scrollLeft -= setWidth;
+          }
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused, testimonials.length]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -59,7 +90,7 @@ const TestimonialsSection = () => {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.5, ease: 'easeOut' as const }
     }
   };
 
@@ -82,11 +113,11 @@ const TestimonialsSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Apa Kata Mereka</h1>
-          <p>Testimoni dari pelanggan setia RestuTech</p>
+          <h1 className="font-heading text-gradient">Apa Kata Mereka</h1>
+          <p className="font-mono">Testimoni dari pelanggan setia RestuTech</p>
         </motion.div>
 
         <motion.div 
@@ -94,28 +125,34 @@ const TestimonialsSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
+          ref={scrollRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
-          {testimonials.map((testimonial) => (
+          {/* Duplicate set to create an infinite seamless marquee loop */}
+          {[...testimonials, ...testimonials].map((testimonial, index) => (
             <motion.div
-              key={testimonial.id}
+              key={`${testimonial.id}-${index}`}
               className="testimonial-card"
               variants={itemVariants}
               whileHover={{ y: -4 }}
             >
               <div className="testimonial-header">
-                <div className="testimonial-avatar">{testimonial.avatar}</div>
+                <div className="testimonial-avatar font-heading">{testimonial.avatar}</div>
                 <div className="testimonial-info">
-                  <h3>{testimonial.name}</h3>
-                  <p>{testimonial.device}</p>
+                  <h3 className="font-heading text-gradient">{testimonial.name}</h3>
+                  <p className="font-mono">{testimonial.device}</p>
                 </div>
               </div>
 
               <RenderStars rating={testimonial.rating} />
 
-              <p className="testimonial-text">"{testimonial.text}"</p>
+              <p className="testimonial-text font-body">"{testimonial.text}"</p>
 
-              <div className="testimonial-date">{testimonial.date}</div>
+              <div className="testimonial-date font-mono">{testimonial.date}</div>
             </motion.div>
           ))}
         </motion.div>

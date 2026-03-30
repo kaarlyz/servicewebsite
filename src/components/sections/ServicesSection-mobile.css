@@ -2,11 +2,86 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 40px 16px;
+    padding: 60px 20px;
   }
 
   .services-container {
     padding: 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+    text-align: center !important; /* Profesional, terpusat elegan */
+  }
+
+  .section-header h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* KARTU LAYANAN - TATA LETAK PROFESIONAL (BERSIH, RATA KIRI, KONSISTEN) */
+  .service-card {
+    display: grid !important;
+    grid-template-columns: 56px 1fr !important;
+    grid-template-areas: 
+      "icon title"
+      "icon desc"
+      ". price" !important;
+    align-items: start !important;
+    text-align: left !important;
+    padding: 24px 20px !important;
+    gap: 6px 16px !important;
+    background: var(--color-dark-matter) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+  }
+
+  .service-icon-wrapper {
+    grid-area: icon !important;
+    width: 56px !important;
+    height: 56px !important;
+    margin: 0 !important;
+  }
+
+  .service-card h3 {
+    grid-area: title !important;
+    font-size: 1.1rem !important;
+    margin: 0 0 4px 0 !important;
+  }
+
+  .service-card p {
+    grid-area: desc !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+    color: var(--color-stardust) !important;
+  }
+
+  .service-price {
+    grid-area: price !important;
+    font-size: 0.9rem !important;
+    padding: 6px 12px !important;
+    margin-top: 10px !important;
+    justify-self: start !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 60px 20px;
   }
 
   .section-header {
@@ -15,128 +90,61 @@
 
   .section-header h1 {
     font-size: 1.8rem;
-    margin-bottom: 12px;
   }
 
   .section-header p {
     font-size: 0.95rem;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
   .service-card {
-    padding: 20px 16px;
-    gap: 12px;
+    grid-template-columns: 48px 1fr !important;
+    padding: 20px 16px !important;
+    gap: 4px 14px !important;
   }
 
   .service-icon-wrapper {
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 12px;
+    width: 48px !important;
+    height: 48px !important;
   }
 
   .service-card h3 {
-    font-size: 1rem;
+    font-size: 1.05rem !important;
   }
 
   .service-card p {
-    font-size: 0.85rem;
-    min-height: auto;
+    font-size: 0.85rem !important;
   }
 
   .service-price {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .services-section {
-    padding: 30px 12px;
-  }
-
-  .section-header {
-    margin-bottom: 24px;
-  }
-
-  .section-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .section-header p {
-    font-size: 0.9rem;
-  }
-
-  .services-grid {
-    gap: 12px;
-  }
-
-  .service-card {
-    padding: 16px 12px;
-    text-align: center;
-  }
-
-  .service-icon-wrapper {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 10px;
-  }
-
-  .service-icon {
-    font-size: 1.5rem;
-  }
-
-  .service-card h3 {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-  }
-
-  .service-card p {
-    font-size: 0.8rem;
-  }
-
-  .service-price {
-    font-size: 0.85rem;
-    padding: 4px 10px;
+    font-size: 0.85rem !important;
+    padding: 4px 10px !important;
   }
 }
 
 @media (max-width: 360px) {
   .services-section {
-    padding: 24px 10px;
-  }
-
-  .section-header {
-    margin-bottom: 18px;
+    padding: 60px 16px;
   }
 
   .section-header h1 {
-    font-size: 1.3rem;
-  }
-
-  .section-header p {
-    font-size: 0.85rem;
+    font-size: 1.5rem;
   }
 
   .service-card {
-    padding: 12px 10px;
+    grid-template-columns: 44px 1fr !important;
+    padding: 16px 12px !important;
   }
 
   .service-icon-wrapper {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto 8px;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .service-card h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem !important;
   }
 
   .service-card p {
-    font-size: 0.75rem;
+    font-size: 0.8rem !important;
   }
 }

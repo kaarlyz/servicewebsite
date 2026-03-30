@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock,  Send, MessageCircle, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, MessageCircle, Instagram } from 'lucide-react';
 import './ContactSection.css';
 import './ContactSection-mobile.css';
 
@@ -88,11 +88,11 @@ const ContactSection = () => {
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Hubungi Kami</h1>
-          <p>Konsultasi gratis, siap membantu 24/7</p>
+          <h1 className="font-heading text-gradient">Hubungi Kami</h1>
+          <p className="font-mono">Konsultasi gratis, siap membantu 24/7</p>
         </motion.div>
 
         <div className="contact-content">
@@ -100,7 +100,7 @@ const ContactSection = () => {
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             className="contact-info"
           >
@@ -118,8 +118,8 @@ const ContactSection = () => {
                       <Icon size={24} />
                     </div>
                     <div className="item-content">
-                      <h3>{item.title}</h3>
-                      <p>{item.content}</p>
+                      <h3 className="font-heading">{item.title}</h3>
+                      <p className="font-mono">{item.content}</p>
                     </div>
                   </motion.div>
                 );
@@ -131,55 +131,55 @@ const ContactSection = () => {
               className="social-media"
               variants={itemVariants}
             >
-              <h3>Media Sosial Kami</h3>
+              <h3 className="font-heading">Media Sosial Kami</h3>
               <div className="social-icons">
                   <motion.a 
-              href="https://wa.me/6285177542325" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button whatsapp"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </motion.a>
-              <motion.a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button instagram"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Instagram size={18} />
-              Instagram
-            </motion.a>
-                <motion.a 
-              href="https://t.me" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button telegram"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Send size={18} />
-              Telegram
-            </motion.a>
+                    href="https://wa.me/6285177542325" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="button button-ghost font-mono"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <MessageCircle size={18} />
+                    WhatsApp
+                  </motion.a>
+                  <motion.a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="button button-ghost font-mono"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Instagram size={18} />
+                    Instagram
+                  </motion.a>
+                  <motion.a 
+                    href="https://t.me" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="button button-ghost font-mono"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Send size={18} />
+                    Telegram
+                  </motion.a>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.div 
-            className="contact-form"
+            className="contact-form glass-panel"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2>Kirim Pesan</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className="font-heading text-gradient">Kirim Pesan</h2>
+            <form onSubmit={handleSubmit} className="form-wrapper">
               <div className="form-group">
                 <input
                   type="text"
@@ -188,6 +188,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
+                  className="font-mono"
                 />
               </div>
 
@@ -199,6 +200,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
+                  className="font-mono"
                 />
               </div>
 
@@ -209,6 +211,7 @@ const ContactSection = () => {
                   placeholder="No. WhatsApp (opsional)"
                   value={formData.whatsapp}
                   onChange={handleInputChange}
+                  className="font-mono"
                 />
               </div>
 
@@ -220,12 +223,13 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  className="font-body"
                 ></textarea>
               </div>
 
               <motion.button
                 type="submit"
-                className="submit-btn"
+                className="submit-btn button button-primary font-mono"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -235,7 +239,7 @@ const ContactSection = () => {
 
               {formSubmitted && (
                 <motion.div
-                  className="success-message"
+                  className="success-message font-mono"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}

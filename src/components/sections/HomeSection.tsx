@@ -4,6 +4,9 @@ import { MessageCircle, Instagram, Send } from 'lucide-react';
 import './HomeSection.css';
 import './HomeSection-mobile.css';
 
+// Import logo from root
+import logo from '/logo.png';
+
 const HomeSection = () => {
   const [typing, setTyping] = useState('');
   const [textIndex, setTextIndex] = useState(0);
@@ -40,7 +43,10 @@ const HomeSection = () => {
   }, [typing, textIndex, charIndex, isDeleting, typingTexts]);
 
   return (
-    <section id="home" className="section home-section">
+    <section id="home" className="section home-section bg-grid-pattern">
+      {/* Radial soft glow background */}
+      <div className="home-ambient-glow"></div>
+
       <div className="home-container">
         <motion.div 
           className="home-content"
@@ -48,52 +54,79 @@ const HomeSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="home-title">Kika Akan Meningkatkan Performa Device Anda</h2>
-          
-          <h3 className="home-subtitle">
-            <span className="typing-text">{typing}</span>
-            <span className="cursor">|</span>
-          </h3>
-          
-          <p className="home-description">
-            Kami melayani berbagai brand dengan metode resmi tanpa bypass ilegal.
-            Solusi smartphone terpercaya untuk kebutuhan Anda.
-          </p>
-          
-          <div className="button-container">
-            <motion.a 
-              href="https://wa.me/6285177542325" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button whatsapp"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </motion.a>
-            <motion.a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button instagram"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Instagram size={18} />
-              Instagram
-            </motion.a>
-            <motion.a 
-              href="https://t.me" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="button telegram"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Send size={18} />
-              Telegram
-            </motion.a>
+          <div className="home-text-wrapper">
+            <h2 className="home-title font-heading-bold">
+              Kika Akan Meningkatkan <br />
+              <span className="text-gradient">Performa Device Anda</span>
+            </h2>
+            
+            <h3 className="home-subtitle font-mono">
+              <span className="typing-text">{typing}</span>
+              <span className="cursor">_</span>
+            </h3>
+            
+            <p className="home-description font-body">
+              Kami melayani berbagai brand dengan metode resmi tanpa bypass ilegal.
+              Solusi smartphone terpercaya untuk keamanan dan performa maksimal.
+            </p>
+            
+            <div className="button-container">
+              <motion.a 
+                href="https://wa.me/6285177542325" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="button-primary font-mono"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle size={18} />
+                WhatsApp
+              </motion.a>
+              <motion.a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="button-ghost font-mono"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Instagram size={18} />
+                Instagram
+              </motion.a>
+              <motion.a 
+                href="https://t.me" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="button-ghost font-mono"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Send size={18} />
+                Telegram
+              </motion.a>
+            </div>
+          </div>
+
+          <div className="home-graphic-wrapper">
+            <div className="home-graphic animate-float">
+               <div className="orbital-ring ring-outer animate-spin-slow"></div>
+               <div className="orbital-ring ring-inner animate-spin-reverse"></div>
+               <div className="logo-container">
+                 <motion.img 
+                  src={logo} 
+                  alt="KikaID Logo" 
+                  className="home-hero-logo"
+                  initial={{ rotate: -10, scale: 0.8 }}
+                  animate={{ rotate: 10, scale: 1 }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    repeatType: "reverse", 
+                    duration: 4,
+                    ease: "easeInOut"
+                  }}
+                 />
+               </div>
+            </div>
           </div>
         </motion.div>
       </div>
