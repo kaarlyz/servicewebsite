@@ -83,6 +83,7 @@ const GalleryRomSection = () => {
   const [activeRomIndex, setActiveRomIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [direction, setDirection] = useState(0); // 1 = Next, -1 = Prev
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Placeholder SVG data URI (tidak bergantung jaringan)
   const getPlaceholder = (text: string = 'Gambar tidak tersedia') => {
@@ -96,18 +97,21 @@ const GalleryRomSection = () => {
   };
 
   const handlePrevImage = () => {
+    if (isAnimating) return;
     setDirection(-1);
     const totalImages = romData[activeRomIndex].images.length;
     setActiveImageIndex(activeImageIndex === 0 ? totalImages - 1 : activeImageIndex - 1);
   };
 
   const handleNextImage = () => {
+    if (isAnimating) return;
     setDirection(1);
     const totalImages = romData[activeRomIndex].images.length;
     setActiveImageIndex(activeImageIndex === totalImages - 1 ? 0 : activeImageIndex + 1);
   };
 
   const handleSelectRom = (index: number) => {
+    if (index === activeRomIndex) return;
     setDirection(0);
     setActiveRomIndex(index);
     setActiveImageIndex(0);
@@ -240,6 +244,8 @@ const GalleryRomSection = () => {
                   animate="center"
                   exit="exit"
                   custom={direction}
+                  onAnimationStart={() => setIsAnimating(true)}
+                  onAnimationComplete={() => setIsAnimating(false)}
                   style={{ transformStyle: 'preserve-3d' as const, transformOrigin: 'center center -150px' }}
                 >
                   <div className="phone-frame main full-phone">
