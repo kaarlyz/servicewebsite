@@ -382,6 +382,7 @@
   -webkit-transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform-origin: center center -150px;
 }
 
 /* Phone Frame Styles */

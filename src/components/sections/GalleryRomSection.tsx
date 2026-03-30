@@ -82,6 +82,7 @@ const romData = [
 const GalleryRomSection = () => {
   const [activeRomIndex, setActiveRomIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 = Next, -1 = Prev
 
   // Placeholder SVG data URI (tidak bergantung jaringan)
   const getPlaceholder = (text: string = 'Gambar tidak tersedia') => {
@@ -95,18 +96,44 @@ const GalleryRomSection = () => {
   };
 
   const handlePrevImage = () => {
+    setDirection(-1);
     const totalImages = romData[activeRomIndex].images.length;
     setActiveImageIndex(activeImageIndex === 0 ? totalImages - 1 : activeImageIndex - 1);
   };
 
   const handleNextImage = () => {
+    setDirection(1);
     const totalImages = romData[activeRomIndex].images.length;
     setActiveImageIndex(activeImageIndex === totalImages - 1 ? 0 : activeImageIndex + 1);
   };
 
   const handleSelectRom = (index: number) => {
+    setDirection(0);
     setActiveRomIndex(index);
     setActiveImageIndex(0);
+  };
+
+  const cubeVariants = {
+    enter: (direction: number) => ({
+      rotateY: direction > 0 ? 90 : -90,
+      opacity: 1,
+    }),
+    center: {
+      rotateY: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+      }
+    },
+    exit: (direction: number) => ({
+      rotateY: direction > 0 ? -90 : 90,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+      }
+    })
   };
 
   // Hitung indeks gambar sebelumnya dan berikutnya dalam ROM yang sama
@@ -171,11 +198,11 @@ const GalleryRomSection = () => {
                 }}
                 animate={{
                   opacity: 0.2,
-                  x: -40,
-                  scale: 0.75,
-                  rotateY: -35,
+                  x: '-50%',
+                  scale: 0.8,
+                  rotateY: -90,
                   rotateX: 0,
-                  z: 0
+                  z: -150
                 }}
                 exit={{
                   opacity: 0,
@@ -189,7 +216,7 @@ const GalleryRomSection = () => {
                   duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
-                style={{ transformStyle: 'preserve-3d' as const }}
+                style={{ transformStyle: 'preserve-3d' as const, transformOrigin: 'center center -150px' }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
@@ -204,37 +231,16 @@ const GalleryRomSection = () => {
                 </div>
               </m.div>
 
-              {/* Center ROM Phone (Active) - Cube Center */}
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="popLayout" custom={direction}>
                 <m.div
                   key={`center-${activeRomIndex}-${activeImageIndex}`}
                   className="phone-carousel-center"
-                  initial={{
-                    opacity: 0,
-                    rotateY: 120,
-                    rotateX: -30,
-                    scale: 0.7,
-                    z: -300
-                  }}
-                  animate={{
-                    opacity: 1,
-                    rotateY: 0,
-                    rotateX: 0,
-                    scale: 1,
-                    z: 0,
-                    transition: {
-                      duration: 0.9,
-                      ease: [0.25, 0.46, 0.45, 0.94]
-                    }
-                  }}
-                  exit={{
-                    opacity: 0,
-                    rotateY: -120,
-                    rotateX: 30,
-                    scale: 0.7,
-                    z: -300
-                  }}
-                  style={{ transformStyle: 'preserve-3d' as const }}
+                  variants={cubeVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  custom={direction}
+                  style={{ transformStyle: 'preserve-3d' as const, transformOrigin: 'center center -150px' }}
                 >
                   <div className="phone-frame main full-phone">
                     <div className="phone-screen">
@@ -264,11 +270,11 @@ const GalleryRomSection = () => {
                 }}
                 animate={{
                   opacity: 0.2,
-                  x: 40,
-                  scale: 0.75,
-                  rotateY: 35,
+                  x: '50%',
+                  scale: 0.8,
+                  rotateY: 90,
                   rotateX: 0,
-                  z: 0
+                  z: -150
                 }}
                 exit={{
                   opacity: 0,
@@ -282,7 +288,7 @@ const GalleryRomSection = () => {
                   duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
-                style={{ transformStyle: 'preserve-3d' as const }}
+                style={{ transformStyle: 'preserve-3d' as const, transformOrigin: 'center center -150px' }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
