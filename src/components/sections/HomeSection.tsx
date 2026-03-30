@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { MessageCircle, Instagram, Send } from 'lucide-react';
 import './HomeSection.css';
 import './HomeSection-mobile.css';
@@ -48,10 +48,11 @@ const HomeSection = () => {
       <div className="home-ambient-glow"></div>
 
       <div className="home-container">
-        <motion.div 
+        <m.div 
           className="home-content"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="home-text-wrapper">
@@ -71,7 +72,7 @@ const HomeSection = () => {
             </p>
             
             <div className="button-container">
-              <motion.a 
+              <m.a 
                 href="https://wa.me/6285177542325" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -81,8 +82,8 @@ const HomeSection = () => {
               >
                 <MessageCircle size={18} />
                 WhatsApp
-              </motion.a>
-              <motion.a 
+              </m.a>
+              <m.a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -92,8 +93,8 @@ const HomeSection = () => {
               >
                 <Instagram size={18} />
                 Instagram
-              </motion.a>
-              <motion.a 
+              </m.a>
+              <m.a 
                 href="https://t.me" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -103,7 +104,7 @@ const HomeSection = () => {
               >
                 <Send size={18} />
                 Telegram
-              </motion.a>
+              </m.a>
             </div>
           </div>
 
@@ -112,15 +113,15 @@ const HomeSection = () => {
                <div className="orbital-ring ring-outer animate-spin-slow"></div>
                <div className="orbital-ring ring-inner animate-spin-reverse"></div>
                <div className="logo-container">
-                 <motion.img 
+                 <m.img 
                   src={logo} 
                   alt="KikaID Logo" 
                   className="home-hero-logo"
                   initial={{ rotate: -10, scale: 0.8 }}
-                  animate={{ rotate: 10, scale: 1 }}
+                  whileInView={{ rotate: 10, scale: 1 }}
                   transition={{ 
                     repeat: Infinity, 
-                    repeatType: "reverse", 
+                    repeatType: "reverse" as const, 
                     duration: 4,
                     ease: "easeInOut"
                   }}
@@ -128,7 +129,7 @@ const HomeSection = () => {
                </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

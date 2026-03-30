@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Smartphone, Unlock, Zap, HardDrive, Shield, Wrench, ChevronLeft, ChevronRight } from 'lucide-react';
 import './ServicesSection.css';
 import './ServicesSection-mobile.css';
@@ -103,7 +103,7 @@ const ServicesSection = () => {
   return (
     <section id="layanan" className="section services-section">
       <div className="services-container">
-        <motion.div 
+        <m.div 
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,10 +112,10 @@ const ServicesSection = () => {
         >
           <h1 className="font-heading text-gradient">Layanan Kami</h1>
           <p className="font-mono">Solusi lengkap untuk kebutuhan smartphone Anda</p>
-        </motion.div>
+        </m.div>
 
         {/* Desktop Grid */}
-        <motion.div 
+        <m.div 
           className="services-grid desktop-grid"
           variants={containerVariants}
           initial="hidden"
@@ -125,7 +125,7 @@ const ServicesSection = () => {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
+              <m.div
                 key={service.id}
                 className="service-card"
                 variants={itemVariants}
@@ -143,16 +143,16 @@ const ServicesSection = () => {
                 <h3 className="font-heading">{service.title}</h3>
                 <p className="font-body">{service.description}</p>
                 <span className="service-price font-mono">{service.price}</span>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/* Mobile Carousel */}
         <div className="services-mobile-carousel">
           <div className="carousel-container" style={{ perspective: '1000px' }}>
             <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.div
+              <m.div
                 key={activeServiceIndex}
                 custom={direction}
                 variants={carouselVariantsHorizontal}
@@ -182,13 +182,13 @@ const ServicesSection = () => {
                     </div>
                   );
                 })()}
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 
           {/* Carousel Controls */}
           <div className="carousel-controls">
-            <motion.button
+            <m.button
               className="carousel-btn prev-btn"
               onClick={handlePrevService}
               whileHover={{ scale: 1.1 }}
@@ -196,11 +196,11 @@ const ServicesSection = () => {
               aria-label="Previous service"
             >
               <ChevronLeft size={20} />
-            </motion.button>
+            </m.button>
 
             <div className="carousel-indicators">
               {services.map((_, index) => (
-                <motion.div
+                <m.div
                   key={index}
                   className={`indicator ${index === activeServiceIndex ? 'active' : ''}`}
                   whileHover={{ scale: 1.2 }}
@@ -212,7 +212,7 @@ const ServicesSection = () => {
               ))}
             </div>
 
-            <motion.button
+            <m.button
               className="carousel-btn next-btn"
               onClick={handleNextService}
               whileHover={{ scale: 1.1 }}
@@ -220,7 +220,7 @@ const ServicesSection = () => {
               aria-label="Next service"
             >
               <ChevronRight size={20} />
-            </motion.button>
+            </m.button>
           </div>
 
           <p className="carousel-counter font-mono">{activeServiceIndex + 1} / {services.length}</p>

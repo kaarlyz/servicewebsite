@@ -1,15 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
-import HomeSection from './components/sections/HomeSection';
-import ServicesSection from './components/sections/ServicesSection';
-import PricingSection from './components/sections/PricingSection';
-import TestimonialsSection from './components/sections/TestimonialsSection';
-import GalleryRomSection from './components/sections/GalleryRomSection';
-import ContactSection from './components/sections/ContactSection';
 import Footer from './components/Footer';
-import RecommendedSection from './components/sections/Recommended-Section';  // <-- DIUBAH
+import { LazyMotion } from 'framer-motion';
 import './App.css';
+
+const loadFeatures = () => import('./lib/framer-motion-features').then(res => res.default);
+
+// Lazy load sections for better performance
+const HomeSection = lazy(() => import('./components/sections/HomeSection'));
+const ServicesSection = lazy(() => import('./components/sections/ServicesSection'));
+const PricingSection = lazy(() => import('./components/sections/PricingSection'));
+const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection'));
+const GalleryRomSection = lazy(() => import('./components/sections/GalleryRomSection'));
+const RecommendedSection = lazy(() => import('./components/sections/Recommended-Section'));
+const ContactSection = lazy(() => import('./components/sections/ContactSection'));
+
+// Simple loading placeholder
+const SectionLoader = () => (
+  <div style={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="animate-spin-slow" style={{ width: '30px', height: '30px', border: '2px solid var(--color-bitcoin)', borderTopColor: 'transparent', borderRadius: '50%' }}></div>
+  </div>
+);
 
 function App() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -28,13 +40,17 @@ function App() {
       <div className="app">
         <Header scrollPosition={scrollPosition} />
         <main className="main-content">
-          <HomeSection />
-          <ServicesSection />
-          <PricingSection />
-          <TestimonialsSection />
-          <GalleryRomSection />
-          <RecommendedSection />  {/* <-- SUDAH BENAR */}
-          <ContactSection />
+          <LazyMotion features={loadFeatures} strict>
+            <Suspense fallback={<SectionLoader />}>
+              <HomeSection />
+              <ServicesSection />
+              <PricingSection />
+              <TestimonialsSection />
+              <GalleryRomSection />
+              <RecommendedSection />
+              <ContactSection />
+            </Suspense>
+          </LazyMotion>
         </main>
         <Footer />
       </div>

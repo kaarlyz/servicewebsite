@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { motion, useInView, useAnimation, AnimatePresence } from 'framer-motion';
+import { m, useInView, useAnimation, AnimatePresence } from 'framer-motion';
 import './Recommend-Section.css';
 import './RecommendedSection-mobile.css';
 
@@ -26,103 +26,61 @@ const RecommendedSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
 
-  // Data rekomendasi device
+  // Data rekomendasi device dengan logo fallback siap pakai
   const recommendedDevices: Device[] = [
     {
-      id: 1,
-      rank: 1,
-      brand: 'Xiaomi',
-      logo: '/images/brands/xiaomi-logo.png',
-      model: 'Xiaomi Mi 9T / Redmi K20',
+      id: 1, rank: 1, brand: 'Xiaomi',
+      logo: 'https://cdn.worldvectorlogo.com/logos/xiaomi-mobile-brand-logo.svg',
+      model: 'Mi 9T / Redmi K20',
       fullModel: 'Xiaomi Mi 9T Pro (Redmi K20 Pro)',
       romSupport: ['LineageOS', 'Pixel Experience', 'crDroid', 'Havoc-OS'],
-      androidVersion: 'Android 13/14',
-      difficulty: 'Easy',
-      romCount: 15,
-      community: 'Very Active',
-      released: '2019',
-      chipset: 'Snapdragon 855',
-      gpu: 'Adreno 640'
+      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 15, community: 'Very Active',
+      released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
     },
     {
-      id: 2,
-      rank: 2,
-      brand: 'POCO',
-      logo: '/images/brands/poco-logo.png',
+      id: 2, rank: 2, brand: 'POCO',
+      logo: 'https://cdn.worldvectorlogo.com/logos/poco-logo.svg',
       model: 'POCO F1 / X3 Pro',
       fullModel: 'POCO F1 (Xiaomi Pocophone F1)',
       romSupport: ['Pixel Experience', 'crDroid', 'ArrowOS', 'LineageOS'],
-      androidVersion: 'Android 13/14',
-      difficulty: 'Easy',
-      romCount: 20,
-      community: 'Very Active',
-      released: '2018',
-      chipset: 'Snapdragon 845',
-      gpu: 'Adreno 630'
+      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 20, community: 'Very Active',
+      released: '2018', chipset: 'Snapdragon 845', gpu: 'Adreno 630'
     },
     {
-      id: 3,
-      rank: 3,
-      brand: 'OnePlus',
-      logo: '/images/brands/oneplus-logo.png',
+      id: 3, rank: 3, brand: 'OnePlus',
+      logo: 'https://cdn.worldvectorlogo.com/logos/oneplus-1.svg',
       model: 'OnePlus 7/7 Pro',
       fullModel: 'OnePlus 7 Pro 5G',
       romSupport: ['Pixel Experience', 'YAAP', 'crDroid', 'Havoc-OS'],
-      androidVersion: 'Android 13/14',
-      difficulty: 'Easy',
-      romCount: 18,
-      community: 'Very Active',
-      released: '2019',
-      chipset: 'Snapdragon 855',
-      gpu: 'Adreno 640'
+      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 18, community: 'Very Active',
+      released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
     },
     {
-      id: 4,
-      rank: 4,
-      brand: 'Samsung',
-      logo: '/images/brands/samsung-logo.png',
-      model: 'Samsung Galaxy S8/S9',
+      id: 4, rank: 4, brand: 'Samsung',
+      logo: 'https://cdn.worldvectorlogo.com/logos/samsung-6.svg',
+      model: 'Galaxy S8/S9',
       fullModel: 'Samsung Galaxy S9 Plus',
       romSupport: ['LineageOS', 'Havoc-OS', 'Pixel Experience'],
-      androidVersion: 'Android 12/13',
-      difficulty: 'Medium',
-      romCount: 12,
-      community: 'Active',
-      released: '2018',
-      chipset: 'Exynos 9810',
-      gpu: 'Mali G72 MP18'
+      androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 12, community: 'Active',
+      released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
     },
     {
-      id: 5,
-      rank: 5,
-      brand: 'Google',
-      logo: '/images/brands/google-logo.png',
-      model: 'Google Pixel 4/4a',
+      id: 5, rank: 5, brand: 'Google',
+      logo: 'https://cdn.worldvectorlogo.com/logos/google-g-2015.svg',
+      model: 'Pixel 4/4a',
       fullModel: 'Google Pixel 4a 5G',
       romSupport: ['GrapheneOS', 'CalyxOS', 'LineageOS'],
-      androidVersion: 'Android 14',
-      difficulty: 'Easy',
-      romCount: 10,
-      community: 'Active',
-      released: '2020',
-      chipset: 'Snapdragon 730G',
-      gpu: 'Adreno 618'
+      androidVersion: 'Android 14', difficulty: 'Easy', romCount: 10, community: 'Active',
+      released: '2020', chipset: 'Snapdragon 730G', gpu: 'Adreno 618'
     },
     {
-      id: 6,
-      rank: 6,
-      brand: 'Samsung',
-      logo: '/images/brands/samsung-logo.png',
-      model: 'Samsung Galaxy Note 9',
+      id: 6, rank: 6, brand: 'Samsung',
+      logo: 'https://cdn.worldvectorlogo.com/logos/samsung-6.svg',
+      model: 'Galaxy Note 9',
       fullModel: 'Samsung Galaxy Note 9',
       romSupport: ['LineageOS', 'Havoc-OS'],
-      androidVersion: 'Android 12/13',
-      difficulty: 'Medium',
-      romCount: 8,
-      community: 'Moderate',
-      released: '2018',
-      chipset: 'Exynos 9810',
-      gpu: 'Mali G72 MP18'
+      androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 8, community: 'Moderate',
+      released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
     }
   ];
 
@@ -180,7 +138,7 @@ const RecommendedSection = () => {
   };
 
   return (
-    <motion.section 
+    <m.section 
       id="rekomendasi" 
       className="recommended-section"
       ref={ref}
@@ -192,17 +150,17 @@ const RecommendedSection = () => {
     >
       <div className="container">
         {/* Header */}
-        <motion.div className="section-header" variants={headerVariants}>
+        <m.div className="section-header" variants={headerVariants}>
           <h2 className="section-title font-heading text-gradient">Top Recommended Devices</h2>
           <p className="section-description font-mono">
             Discover the best devices for custom ROMs, ranked by community support and stability
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Main Content */}
         <div className="recommend-content glass-panel">
           {/* Left Side */}
-          <motion.div 
+          <m.div 
             className="device-list"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -215,26 +173,33 @@ const RecommendedSection = () => {
             </div>
             <div className="device-list-items">
               {recommendedDevices.map((device) => (
-                <motion.div
+                <m.div
                   key={device.id}
                   className={`list-item ${selectedDevice?.id === device.id ? 'active' : ''}`}
                   onClick={() => setSelectedDevice(device)}
                   whileHover={{ x: 5 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <img src={device.logo} alt={device.brand} className="list-item-logo" />
+                  <img 
+                    src={device.logo} 
+                    alt={device.brand} 
+                    className="list-item-logo" 
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${device.brand}&background=F7931A&color=fff&bold=true`;
+                    }}
+                  />
                   <div className="list-item-info">
                     <h4 className="list-item-brand font-heading">{device.brand}</h4>
                     <p className="list-item-model font-mono">{device.model}</p>
                   </div>
                   <div className="list-item-rank font-mono">#{device.rank}</div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Side */}
-          <motion.div 
+          <m.div 
             className="device-detail-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -243,7 +208,7 @@ const RecommendedSection = () => {
           >
             <AnimatePresence mode="wait">
               {selectedDevice ? (
-                <motion.div
+                <m.div
                   key={selectedDevice.id}
                   className="detail-card-full"
                   initial={{ opacity: 0, y: 20 }}
@@ -254,7 +219,14 @@ const RecommendedSection = () => {
                   {/* Header */}
                   <div className="detail-header-full">
                     <div className="detail-logo-container">
-                      <img src={selectedDevice.logo} alt={selectedDevice.brand} className="detail-logo-full" />
+                      <img 
+                        src={selectedDevice.logo} 
+                        alt={selectedDevice.brand} 
+                        className="detail-logo-full" 
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${selectedDevice.brand}&background=F7931A&color=fff&bold=true`;
+                        }}
+                      />
                     </div>
                     <div className="detail-title-full">
                       <h2 className="font-heading text-gradient">{selectedDevice.brand}</h2>
@@ -328,17 +300,17 @@ const RecommendedSection = () => {
                       Download ROMs
                     </button>
                   </div>
-                </motion.div>
+                </m.div>
               ) : (
                 <div className="empty-state-full font-mono">
                   Select a device from the list
                 </div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </m.div>
         </div>
       </div>
-    </motion.section>
+    </m.section>
   );
 };
 

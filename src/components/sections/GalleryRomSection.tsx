@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './GalleryRomSection.css';
 import './GalleryRomSection-mobile.css';
@@ -116,7 +116,7 @@ const GalleryRomSection = () => {
   return (
     <section id="gallery-rom" className="section gallery-rom-section">
       <div className="gallery-container">
-        <motion.div
+        <m.div
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,9 +125,9 @@ const GalleryRomSection = () => {
         >
           <h1 className="font-heading text-gradient">Custom ROM Gallery</h1>
           <p className="font-mono">Lihat tampilan berbagai custom ROM pilihan</p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="rom-gallery-container"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -139,7 +139,7 @@ const GalleryRomSection = () => {
             <h3 className="rom-icons-title font-heading">Pilih ROM</h3>
             <div className="rom-icons-grid">
               {romData.map((rom, idx) => (
-                <motion.button
+                <m.button
                   key={idx}
                   className={`rom-icon-item font-mono ${activeRomIndex === idx ? 'active' : ''}`}
                   onClick={() => handleSelectRom(idx)}
@@ -147,7 +147,7 @@ const GalleryRomSection = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <span>{rom.name}</span>
-                </motion.button>
+                </m.button>
               ))}
             </div>
           </div>
@@ -157,7 +157,7 @@ const GalleryRomSection = () => {
             {/* 3-Phone Carousel Container with 3D Perspective */}
             <div className="carousel-phones-wrapper" style={{ perspective: '1500px' }}>
               {/* Previous Image Phone (dari ROM yang sama, dengan efek gelap) */}
-              <motion.div
+              <m.div
                 key={`prev-${activeRomIndex}-${prevImageIndex}`}
                 className="phone-carousel-side prev-phone"
                 initial={{
@@ -188,7 +188,7 @@ const GalleryRomSection = () => {
                   duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
-                style={{ transformStyle: 'preserve-3d' }}
+                style={{ transformStyle: 'preserve-3d' as const }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
@@ -201,11 +201,11 @@ const GalleryRomSection = () => {
                   </div>
                   <div className="phone-notch"></div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Center ROM Phone (Active) - Cube Center */}
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={`center-${activeRomIndex}-${activeImageIndex}`}
                   className="phone-carousel-center"
                   initial={{
@@ -233,7 +233,7 @@ const GalleryRomSection = () => {
                     scale: 0.7,
                     z: -300
                   }}
-                  style={{ transformStyle: 'preserve-3d' }}
+                  style={{ transformStyle: 'preserve-3d' as const }}
                 >
                   <div className="phone-frame main full-phone">
                     <div className="phone-screen">
@@ -246,11 +246,11 @@ const GalleryRomSection = () => {
                     </div>
                     <div className="phone-notch"></div>
                   </div>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
 
               {/* Next Image Phone (dari ROM yang sama, dengan efek gelap) */}
-              <motion.div
+              <m.div
                 key={`next-${activeRomIndex}-${nextImageIndex}`}
                 className="phone-carousel-side next-phone"
                 initial={{
@@ -281,7 +281,7 @@ const GalleryRomSection = () => {
                   duration: 0.6,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
-                style={{ transformStyle: 'preserve-3d' }}
+                style={{ transformStyle: 'preserve-3d' as const }}
               >
                 <div className="phone-frame carousel-phone">
                   <div className="phone-screen">
@@ -294,12 +294,12 @@ const GalleryRomSection = () => {
                   </div>
                   <div className="phone-notch"></div>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Navigation Arrows - untuk berganti gambar dalam ROM yang sama */}
             <div className="rom-nav-arrows">
-              <motion.button
+              <m.button
                 className="carousel-arrow prev-btn"
                 onClick={handlePrevImage}
                 whileHover={{ scale: 1.1 }}
@@ -307,13 +307,13 @@ const GalleryRomSection = () => {
                 aria-label="Previous image"
               >
                 <ChevronLeft size={20} />
-              </motion.button>
+              </m.button>
 
               <span className="rom-counter font-mono">
                 {activeImageIndex + 1} / {romData[activeRomIndex].images.length}
               </span>
 
-              <motion.button
+              <m.button
                 className="carousel-arrow next-btn"
                 onClick={handleNextImage}
                 whileHover={{ scale: 1.1 }}
@@ -321,11 +321,11 @@ const GalleryRomSection = () => {
                 aria-label="Next image"
               >
                 <ChevronRight size={20} />
-              </motion.button>
+              </m.button>
             </div>
 
             {/* ROM Info */}
-            <motion.div
+            <m.div
               className="rom-info"
               key={`info-${activeRomIndex}`}
               initial={{ opacity: 0 }}
@@ -333,9 +333,9 @@ const GalleryRomSection = () => {
               transition={{ duration: 0.3 }}
             >
               <h3 className="font-heading text-gradient">{romData[activeRomIndex].name}</h3>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

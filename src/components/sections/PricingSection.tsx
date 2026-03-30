@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import './PricingSection.css';
 import './PricingSection-mobile.css';
@@ -98,7 +98,7 @@ const PricingSection = () => {
   return (
     <section id="harga" className="section pricing-section">
       <div className="pricing-container">
-        <motion.div 
+        <m.div 
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,9 +107,9 @@ const PricingSection = () => {
         >
           <h1 className="font-heading text-gradient">Harga Layanan</h1>
           <p className="font-mono">Pilih paket yang sesuai dengan kebutuhan Anda</p>
-        </motion.div>
+        </m.div>
 
-        <motion.div 
+        <m.div 
           className="pricing-grid"
           variants={containerVariants}
           initial="hidden"
@@ -117,7 +117,7 @@ const PricingSection = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {pricingPlans.map((plan) => (
-            <motion.div
+            <m.div
               key={plan.id}
               className={`pricing-card ${plan.popular ? 'popular' : ''}`}
               variants={itemVariants}
@@ -147,7 +147,7 @@ const PricingSection = () => {
                 ))}
               </ul>
 
-              <motion.a
+              <m.a
                 href={plan.isCustom ? 'https://wa.me/your_number' : '#kontak'}
                 target={plan.isCustom ? '_blank' : '_self'}
                 className={`pricing-button font-body ${plan.popular ? 'button-primary' : 'button-ghost'}`}
@@ -155,19 +155,19 @@ const PricingSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {plan.isCustom ? 'Hubungi Kami' : 'Pilih Paket'}
-              </motion.a>
-            </motion.div>
+              </m.a>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Mobile Carousel View */}
-        <motion.div 
+        <m.div 
           className="pricing-mobile-carousel"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div
+          <m.div
             className={`mobile-pricing-card ${pricingPlans[mobileActiveIndex].popular ? 'popular' : ''}`}
             key={`mobile-${mobileActiveIndex}`}
             initial={{ opacity: 0, x: 20 }}
@@ -200,7 +200,7 @@ const PricingSection = () => {
               ))}
             </ul>
 
-            <motion.a
+            <m.a
               href={pricingPlans[mobileActiveIndex].isCustom ? 'https://wa.me/your_number' : '#kontak'}
               target={pricingPlans[mobileActiveIndex].isCustom ? '_blank' : '_self'}
               className={`pricing-button font-body ${pricingPlans[mobileActiveIndex].popular ? 'button-primary' : 'button-ghost'}`}
@@ -208,12 +208,12 @@ const PricingSection = () => {
               whileTap={{ scale: 0.95 }}
             >
               {pricingPlans[mobileActiveIndex].isCustom ? 'Hubungi Kami' : 'Pilih Paket'}
-            </motion.a>
-          </motion.div>
+            </m.a>
+          </m.div>
 
           {/* Mobile Navigation */}
           <div className="mobile-carousel-nav">
-            <motion.button
+            <m.button
               className="carousel-arrow-mobile prev"
               onClick={handleMobilePrev}
               whileHover={{ scale: 1.1 }}
@@ -221,13 +221,13 @@ const PricingSection = () => {
               aria-label="Previous plan"
             >
               <ChevronLeft size={20} />
-            </motion.button>
+            </m.button>
 
             <span className="carousel-counter font-mono">
               {mobileActiveIndex + 1} / {pricingPlans.length}
             </span>
 
-            <motion.button
+            <m.button
               className="carousel-arrow-mobile next"
               onClick={handleMobileNext}
               whileHover={{ scale: 1.1 }}
@@ -235,9 +235,9 @@ const PricingSection = () => {
               aria-label="Next plan"
             >
               <ChevronRight size={20} />
-            </motion.button>
+            </m.button>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

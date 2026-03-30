@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle, Instagram } from 'lucide-react';
 import './ContactSection.css';
 import './ContactSection-mobile.css';
@@ -84,7 +84,7 @@ const ContactSection = () => {
   return (
     <section id="kontak" className="section contact-section">
       <div className="contact-container">
-        <motion.div 
+        <m.div 
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,11 +93,11 @@ const ContactSection = () => {
         >
           <h1 className="font-heading text-gradient">Hubungi Kami</h1>
           <p className="font-mono">Konsultasi gratis, siap membantu 24/7</p>
-        </motion.div>
+        </m.div>
 
         <div className="contact-content">
           {/* Contact Info */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -108,7 +108,7 @@ const ContactSection = () => {
               {contactInfo.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <motion.div
+                  <m.div
                     key={item.id}
                     className="contact-item"
                     variants={itemVariants}
@@ -121,19 +121,19 @@ const ContactSection = () => {
                       <h3 className="font-heading">{item.title}</h3>
                       <p className="font-mono">{item.content}</p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>
 
             {/* Social Media */}
-            <motion.div 
+            <m.div 
               className="social-media"
               variants={itemVariants}
             >
               <h3 className="font-heading">Media Sosial Kami</h3>
               <div className="social-icons">
-                  <motion.a 
+                  <m.a 
                     href="https://wa.me/6285177542325" 
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -143,8 +143,8 @@ const ContactSection = () => {
                   >
                     <MessageCircle size={18} />
                     WhatsApp
-                  </motion.a>
-                  <motion.a 
+                  </m.a>
+                  <m.a 
                     href="https://instagram.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -154,8 +154,8 @@ const ContactSection = () => {
                   >
                     <Instagram size={18} />
                     Instagram
-                  </motion.a>
-                  <motion.a 
+                  </m.a>
+                  <m.a 
                     href="https://t.me" 
                     target="_blank" 
                     rel="noopener noreferrer"
@@ -165,13 +165,13 @@ const ContactSection = () => {
                   >
                     <Send size={18} />
                     Telegram
-                  </motion.a>
+                  </m.a>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Contact Form */}
-          <motion.div 
+          <m.div 
             className="contact-form glass-panel"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -227,7 +227,7 @@ const ContactSection = () => {
                 ></textarea>
               </div>
 
-              <motion.button
+              <m.button
                 type="submit"
                 className="submit-btn button button-primary font-mono"
                 whileHover={{ scale: 1.02 }}
@@ -235,20 +235,22 @@ const ContactSection = () => {
               >
                 <Send size={18} />
                 Kirim Pesan
-              </motion.button>
+              </m.button>
 
-              {formSubmitted && (
-                <motion.div
-                  className="success-message font-mono"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                >
-                  ✓ Pesan berhasil dikirim! Terima kasih.
-                </motion.div>
-              )}
+              <AnimatePresence>
+                {formSubmitted && (
+                  <m.div
+                    className="success-message font-mono"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    ✓ Pesan berhasil dikirim! Terima kasih.
+                  </m.div>
+                )}
+              </AnimatePresence>
             </form>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

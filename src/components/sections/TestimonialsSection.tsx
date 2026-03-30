@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Star } from 'lucide-react';
 import './TestimonialsSection.css';
 import './TestimonialsSection-mobile.css';
@@ -109,7 +109,7 @@ const TestimonialsSection = () => {
   return (
     <section id="testimoni" className="section testimonials-section">
       <div className="testimonials-container">
-        <motion.div 
+        <m.div 
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,9 +118,9 @@ const TestimonialsSection = () => {
         >
           <h1 className="font-heading text-gradient">Apa Kata Mereka</h1>
           <p className="font-mono">Testimoni dari pelanggan setia RestuTech</p>
-        </motion.div>
+        </m.div>
 
-        <motion.div 
+        <m.div 
           className="testimonials-grid"
           variants={containerVariants}
           initial="hidden"
@@ -134,7 +134,7 @@ const TestimonialsSection = () => {
         >
           {/* Duplicate set to create an infinite seamless marquee loop */}
           {[...testimonials, ...testimonials].map((testimonial, index) => (
-            <motion.div
+            <m.div
               key={`${testimonial.id}-${index}`}
               className="testimonial-card"
               variants={itemVariants}
@@ -153,9 +153,9 @@ const TestimonialsSection = () => {
               <p className="testimonial-text font-body">"{testimonial.text}"</p>
 
               <div className="testimonial-date font-mono">{testimonial.date}</div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
