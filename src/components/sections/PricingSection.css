@@ -1,19 +1,13 @@
 /* Pricing Section */
 .pricing-section {
-  padding: 100px 35px;
+  padding: var(--section-padding) 0;
   background-color: var(--color-void);
   position: relative;
   z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .pricing-section {
-    padding: 80px 20px;
-  }
-}
-
 .pricing-container {
-  max-width: 1400px;
+  width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -24,16 +18,12 @@
 }
 
 .section-header h1 {
-  font-size: 3rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   margin: 0 0 16px 0;
 }
 
-@media (max-width: 768px) {
-  .section-header h1 {
-    font-size: 2.5rem;
-  }
-}
+/* Removed redundant media query */
 
 .section-header p {
   font-size: 1.1rem;
@@ -60,8 +50,8 @@
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-fluid);
   margin-top: 60px;
 }
 
@@ -87,8 +77,14 @@
 .pricing-card.popular {
   background: linear-gradient(135deg, rgba(247, 147, 26, 0.05), var(--color-dark-matter));
   border: 1px solid rgba(247, 147, 26, 0.4);
-  transform: scale(1.05);
   box-shadow: var(--shadow-primary);
+  /* Scale only on larger screens where there is space */
+}
+
+@media (min-width: 1024px) {
+  .pricing-card.popular {
+    transform: scale(1.05);
+  }
 }
 
 .pricing-card.popular:hover {

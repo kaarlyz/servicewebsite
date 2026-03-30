@@ -1,19 +1,13 @@
 /* Testimonials Section */
 .testimonials-section {
-  padding: 100px 35px;
+  padding: var(--section-padding) 0;
   background-color: var(--color-void);
   position: relative;
-  overflow: hidden; /* Prevent horizontal scroll on document */
-}
-
-@media (max-width: 768px) {
-  .testimonials-section {
-    padding: 80px 20px;
-  }
+  overflow: hidden;
 }
 
 .testimonials-container {
-  max-width: 1400px;
+  width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -24,16 +18,12 @@
 }
 
 .section-header h1 {
-  font-size: 3rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   margin: 0 0 16px 0;
 }
 
-@media (max-width: 768px) {
-  .section-header h1 {
-    font-size: 2.5rem;
-  }
-}
+/* Removed redundant media query - handled by clamp() */
 
 .section-header p {
   font-size: 1.1rem;

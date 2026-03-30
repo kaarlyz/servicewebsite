@@ -11,10 +11,21 @@
   --color-burnt-orange: #EA580C; 
   --color-digital-gold: #FFD600; 
 
-  /* Typography */
+  /* Typography - Fluid Scaling */
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  
+  --fs-h1: clamp(2.5rem, 8vw, 4.5rem);
+  --fs-h2: clamp(2rem, 6vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 4vw, 2.2rem);
+  --fs-body: clamp(0.95rem, 1.2vw, 1.1rem);
+  --fs-small: clamp(0.8rem, 1vw, 0.95rem);
+
+  /* Spacing - Fluid Scaling */
+  --section-padding: clamp(60px, 10vw, 120px);
+  --container-width: min(92%, 1400px);
+  --gap-fluid: clamp(16px, 3vw, 40px);
 
   /* Shadows & Glows */
   --shadow-primary: 0 0 20px -5px rgba(234, 88, 12, 0.5);
@@ -26,11 +37,12 @@
   /* Radii */
   --radius-xl: 12px;
   --radius-2xl: 16px;
+  --radius-3xl: 24px;
   --radius-full: 9999px;
 
   /* Transitions */
   --transition-fast: all 0.2s ease;
-  --transition-normal: all 0.3s ease;
+  --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {

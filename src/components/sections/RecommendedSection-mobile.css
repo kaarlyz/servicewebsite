@@ -26,24 +26,22 @@
     margin-top: 20px;
   }
 
-  /* HORIZONTAL CAROUSEL CHIPS */
+  /* ADAPTIVE SELECTION GRID - NO FORCED HORIZONTAL */
   .device-list {
     background: transparent !important;
     border: none !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 24px !important;
     padding: 0 !important;
     position: relative;
-    top: 0;
     max-height: none !important;
-    overflow-y: visible !important;
   }
 
   .device-list-items {
-    display: flex !important;
-    overflow-x: auto !important;
-    gap: 12px !important;
-    padding: 4px !important;
-    scrollbar-width: none;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    overflow-x: visible !important;
+    padding: 0 !important;
   }
 
   .device-list-items::-webkit-scrollbar {
@@ -51,21 +49,33 @@
   }
 
   .list-item {
-    flex: 0 0 auto !important;
-    padding: 10px 16px !important;
+    flex: none !important;
+    width: 100% !important;
+    padding: 12px !important;
     background: var(--color-dark-matter) !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-radius: var(--radius-full) !important;
+    border-radius: var(--radius-xl) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
   }
 
   .list-item.active {
     border-color: var(--color-bitcoin) !important;
     background: rgba(247, 147, 26, 0.1) !important;
+    box-shadow: 0 0 15px rgba(247, 147, 26, 0.1);
   }
 
   .list-item-logo {
-    width: 24px !important;
-    height: 24px !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .list-item-brand {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
   }
 
   /* DETAIL CARD */

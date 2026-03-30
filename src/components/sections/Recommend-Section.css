@@ -1,22 +1,10 @@
 /* Recommended Section */
 .recommended-section {
-  padding: 100px 35px;
+  padding: var(--section-padding) 0;
   background-color: var(--color-void);
   position: relative;
   z-index: 1;
   overflow: hidden;
-}
-
-@media (max-width: 1200px) {
-  .recommended-section {
-    padding: 80px 28px;
-  }
-}
-
-@media (max-width: 768px) {
-  .recommended-section {
-    padding: 60px 20px;
-  }
 }
 
 /* Background effects */
@@ -34,11 +22,10 @@
 }
 
 .container {
-  max-width: 1400px;
+  width: var(--container-width);
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  width: 100%;
 }
 
 /* Header */
@@ -48,7 +35,7 @@
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   margin: 0 0 16px 0;
 }

@@ -1,34 +1,10 @@
 /* Contact Section */
 .contact-section {
-  padding: 100px 35px;
+  padding: var(--section-padding) 0;
   background-color: var(--color-void);
   overflow-x: hidden;
   position: relative;
   z-index: 1;
-}
-
-@media (max-width: 1200px) {
-  .contact-section {
-    padding: 80px 28px;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 60px 20px;
-  }
-}
-
-@media (max-width: 640px) {
-  .contact-section {
-    padding: 50px 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-section {
-    padding: 40px 12px;
-  }
 }
 
 /* Scroll Animations */
@@ -70,7 +46,7 @@
 }
 
 .contact-container {
-  max-width: 1400px;
+  width: var(--container-width);
   margin: 0 auto;
 }
 
@@ -81,16 +57,12 @@
 }
 
 .section-header h1 {
-  font-size: 3rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   margin: 0 0 16px 0;
 }
 
-@media (max-width: 768px) {
-  .section-header h1 {
-    font-size: 2.5rem;
-  }
-}
+/* Removed redundant mobile media query - handled by clamp() */
 
 .section-header p {
   font-size: 1.1rem;
@@ -104,7 +76,7 @@
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: var(--gap-fluid);
   margin-top: 60px;
   align-items: start;
 }

@@ -2,40 +2,31 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 60px 20px;
+    padding: var(--section-padding) 0;
   }
 
   .services-container {
-    padding: 0;
+    width: var(--container-width);
+    margin: 0 auto;
   }
 
   .section-header {
     margin-bottom: 40px;
-    text-align: center !important; /* Profesional, terpusat elegan */
+    text-align: center !important;
   }
 
-  .section-header h1 {
-    font-size: 2rem;
-    margin-bottom: 12px;
-  }
-
-  .section-header p {
-    font-size: 1rem;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
+  /* Adaptive grid: 1 col on mobile, natural on tablet */
   .services-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: var(--gap-fluid) !important;
   }
 
-  /* KARTU LAYANAN - TATA LETAK PROFESIONAL (BERSIH, RATA KIRI, KONSISTEN) */
+  /* Icon-left layout for mid-size screens */
   .service-card {
     display: grid !important;
     grid-template-columns: 56px 1fr !important;
-    grid-template-areas: 
+    grid-template-areas:
       "icon title"
       "icon desc"
       ". price" !important;
@@ -44,9 +35,8 @@
     padding: 24px 20px !important;
     gap: 6px 16px !important;
     background: var(--color-dark-matter) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: var(--radius-2xl) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 
   .service-icon-wrapper {
@@ -58,93 +48,55 @@
 
   .service-card h3 {
     grid-area: title !important;
-    font-size: 1.1rem !important;
+    font-size: clamp(1rem, 4vw, 1.2rem) !important;
     margin: 0 0 4px 0 !important;
   }
 
   .service-card p {
     grid-area: desc !important;
-    font-size: 0.9rem !important;
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem) !important;
     margin: 0 !important;
     line-height: 1.5 !important;
-    color: var(--color-stardust) !important;
+    min-height: unset !important;
   }
 
   .service-price {
     grid-area: price !important;
     font-size: 0.9rem !important;
     padding: 6px 12px !important;
-    margin-top: 10px !important;
+    margin-top: 8px !important;
     justify-self: start !important;
   }
 }
 
+
 @media (max-width: 480px) {
   .services-section {
-    padding: 60px 20px;
+    padding: var(--section-padding) 0;
   }
 
   .section-header {
     margin-bottom: 30px;
-  }
-
-  .section-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .section-header p {
-    font-size: 0.95rem;
+    padding: 0 20px;
   }
 
   .service-card {
-    grid-template-columns: 48px 1fr !important;
-    padding: 20px 16px !important;
-    gap: 4px 14px !important;
+    grid-template-columns: 1fr !important; /* Stack vertically for more room on very small screens */
+    grid-template-areas: 
+      "icon"
+      "title"
+      "desc"
+      "price" !important;
+    text-align: center !important;
+    padding: 24px !important;
+    gap: 12px !important;
   }
 
   .service-icon-wrapper {
-    width: 48px !important;
-    height: 48px !important;
-  }
-
-  .service-card h3 {
-    font-size: 1.05rem !important;
-  }
-
-  .service-card p {
-    font-size: 0.85rem !important;
+    margin: 0 auto !important;
   }
 
   .service-price {
-    font-size: 0.85rem !important;
-    padding: 4px 10px !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .services-section {
-    padding: 60px 16px;
-  }
-
-  .section-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .service-card {
-    grid-template-columns: 44px 1fr !important;
-    padding: 16px 12px !important;
-  }
-
-  .service-icon-wrapper {
-    width: 44px !important;
-    height: 44px !important;
-  }
-
-  .service-card h3 {
-    font-size: 0.95rem !important;
-  }
-
-  .service-card p {
-    font-size: 0.8rem !important;
+    justify-self: center !important;
   }
 }

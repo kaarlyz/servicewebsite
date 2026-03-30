@@ -1,13 +1,11 @@
 /* Home Section Styles */
 .home-section {
-  padding-top: 120px;
-  padding-bottom: 80px;
-  background-color: transparent;
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative;
-  z-index: 1;
+  background-color: var(--color-void);
+  padding: var(--section-padding) 0;
   overflow: hidden;
 }
 
@@ -28,19 +26,19 @@
 }
 
 .home-container {
-  max-width: 1400px;
+  width: var(--container-width);
   margin: 0 auto;
-  padding: 0 40px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--gap-fluid);
+  align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
-/* Home Content */
+/* Home Content - text + graphic side by side handled by home-container grid */
 .home-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
+  display: contents; /* Let grid flow naturally */
 }
 
 .home-text-wrapper {
@@ -50,21 +48,22 @@
 }
 
 .home-title {
-  font-size: 3.5rem;
+  font-size: var(--fs-h1);
   font-weight: 700;
   line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
   color: var(--color-light);
-  margin: 0;
-  letter-spacing: -1px;
 }
 
 .home-subtitle {
-  font-size: 1.25rem;
+  font-size: var(--fs-h3);
+  font-weight: 500;
   color: var(--color-stardust);
-  margin: 0;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  letter-spacing: 0.5px;
+  gap: 12px;
 }
 
 .typing-text {
@@ -237,39 +236,46 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .home-content {
+  .home-container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
   }
-  
+
   .home-text-wrapper {
     align-items: center;
   }
-  
+
   .home-description {
     max-width: 100%;
   }
-  
+
   .button-container {
     justify-content: center;
   }
-  
+
   .home-graphic-wrapper {
     height: 450px;
     margin-top: 20px;
   }
-  
-  .floating-card {
-    right: 5%;
-  }
 }
 
 @media (max-width: 768px) {
-  .home-title {
-    font-size: 2.8rem;
+  .home-graphic-wrapper {
+    height: 380px;
   }
-  .home-container {
-    padding: 0 20px;
+
+  .ring-outer {
+    width: 320px;
+    height: 320px;
+  }
+
+  .ring-inner {
+    width: 240px;
+    height: 240px;
+  }
+
+  .logo-container {
+    width: 140px;
+    height: 140px;
   }
 }
