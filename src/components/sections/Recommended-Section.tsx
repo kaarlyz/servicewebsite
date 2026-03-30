@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
-import { m, useInView, useAnimation, AnimatePresence } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { m, AnimatePresence } from 'framer-motion';
 import './Recommend-Section.css';
 import './RecommendedSection-mobile.css';
 
@@ -21,78 +21,67 @@ interface Device {
   gpu: string;
 }
 
+// Data rekomendasi device dengan logo fallback siap pakai (Didefinisikan diluar untuk performa)
+const recommendedDevices: Device[] = [
+  {
+    id: 1, rank: 1, brand: 'Xiaomi',
+    logo: 'https://cdn.simpleicons.org/xiaomi/F7931A',
+    model: 'Mi 9T / Redmi K20',
+    fullModel: 'Xiaomi Mi 9T Pro (Redmi K20 Pro)',
+    romSupport: ['LineageOS', 'Pixel Experience', 'crDroid', 'Havoc-OS'],
+    androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 15, community: 'Very Active',
+    released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
+  },
+  {
+    id: 2, rank: 2, brand: 'POCO',
+    logo: 'https://cdn.simpleicons.org/poco/F7931A',
+    model: 'POCO F1 / X3 Pro',
+    fullModel: 'POCO F1 (Xiaomi Pocophone F1)',
+    romSupport: ['Pixel Experience', 'crDroid', 'ArrowOS', 'LineageOS'],
+    androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 20, community: 'Very Active',
+    released: '2018', chipset: 'Snapdragon 845', gpu: 'Adreno 630'
+  },
+  {
+    id: 3, rank: 3, brand: 'OnePlus',
+    logo: 'https://cdn.simpleicons.org/oneplus/F7931A',
+    model: 'OnePlus 7/7 Pro',
+    fullModel: 'OnePlus 7 Pro 5G',
+    romSupport: ['Pixel Experience', 'YAAP', 'crDroid', 'Havoc-OS'],
+    androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 18, community: 'Very Active',
+    released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
+  },
+  {
+    id: 4, rank: 4, brand: 'Samsung',
+    logo: 'https://cdn.simpleicons.org/samsung/F7931A',
+    model: 'Galaxy S8/S9',
+    fullModel: 'Samsung Galaxy S9 Plus',
+    romSupport: ['LineageOS', 'Havoc-OS', 'Pixel Experience'],
+    androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 12, community: 'Active',
+    released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
+  },
+  {
+    id: 5, rank: 5, brand: 'Google',
+    logo: 'https://cdn.simpleicons.org/google/F7931A',
+    model: 'Pixel 4/4a',
+    fullModel: 'Google Pixel 4a 5G',
+    romSupport: ['GrapheneOS', 'CalyxOS', 'LineageOS'],
+    androidVersion: 'Android 14', difficulty: 'Easy', romCount: 10, community: 'Active',
+    released: '2020', chipset: 'Snapdragon 730G', gpu: 'Adreno 618'
+  },
+  {
+    id: 6, rank: 6, brand: 'Samsung',
+    logo: 'https://cdn.simpleicons.org/samsung/F7931A',
+    model: 'Galaxy Note 9',
+    fullModel: 'Samsung Galaxy Note 9',
+    romSupport: ['LineageOS', 'Havoc-OS'],
+    androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 8, community: 'Moderate',
+    released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
+  }
+];
+
 const RecommendedSection = () => {
-  const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
-
-  // Data rekomendasi device dengan logo fallback siap pakai
-  const recommendedDevices: Device[] = [
-    {
-      id: 1, rank: 1, brand: 'Xiaomi',
-      logo: 'https://cdn.worldvectorlogo.com/logos/xiaomi-mobile-brand-logo.svg',
-      model: 'Mi 9T / Redmi K20',
-      fullModel: 'Xiaomi Mi 9T Pro (Redmi K20 Pro)',
-      romSupport: ['LineageOS', 'Pixel Experience', 'crDroid', 'Havoc-OS'],
-      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 15, community: 'Very Active',
-      released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
-    },
-    {
-      id: 2, rank: 2, brand: 'POCO',
-      logo: 'https://cdn.worldvectorlogo.com/logos/poco-logo.svg',
-      model: 'POCO F1 / X3 Pro',
-      fullModel: 'POCO F1 (Xiaomi Pocophone F1)',
-      romSupport: ['Pixel Experience', 'crDroid', 'ArrowOS', 'LineageOS'],
-      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 20, community: 'Very Active',
-      released: '2018', chipset: 'Snapdragon 845', gpu: 'Adreno 630'
-    },
-    {
-      id: 3, rank: 3, brand: 'OnePlus',
-      logo: 'https://cdn.worldvectorlogo.com/logos/oneplus-1.svg',
-      model: 'OnePlus 7/7 Pro',
-      fullModel: 'OnePlus 7 Pro 5G',
-      romSupport: ['Pixel Experience', 'YAAP', 'crDroid', 'Havoc-OS'],
-      androidVersion: 'Android 13/14', difficulty: 'Easy', romCount: 18, community: 'Very Active',
-      released: '2019', chipset: 'Snapdragon 855', gpu: 'Adreno 640'
-    },
-    {
-      id: 4, rank: 4, brand: 'Samsung',
-      logo: 'https://cdn.worldvectorlogo.com/logos/samsung-6.svg',
-      model: 'Galaxy S8/S9',
-      fullModel: 'Samsung Galaxy S9 Plus',
-      romSupport: ['LineageOS', 'Havoc-OS', 'Pixel Experience'],
-      androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 12, community: 'Active',
-      released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
-    },
-    {
-      id: 5, rank: 5, brand: 'Google',
-      logo: 'https://cdn.worldvectorlogo.com/logos/google-g-2015.svg',
-      model: 'Pixel 4/4a',
-      fullModel: 'Google Pixel 4a 5G',
-      romSupport: ['GrapheneOS', 'CalyxOS', 'LineageOS'],
-      androidVersion: 'Android 14', difficulty: 'Easy', romCount: 10, community: 'Active',
-      released: '2020', chipset: 'Snapdragon 730G', gpu: 'Adreno 618'
-    },
-    {
-      id: 6, rank: 6, brand: 'Samsung',
-      logo: 'https://cdn.worldvectorlogo.com/logos/samsung-6.svg',
-      model: 'Galaxy Note 9',
-      fullModel: 'Samsung Galaxy Note 9',
-      romSupport: ['LineageOS', 'Havoc-OS'],
-      androidVersion: 'Android 12/13', difficulty: 'Medium', romCount: 8, community: 'Moderate',
-      released: '2018', chipset: 'Exynos 9810', gpu: 'Mali G72 MP18'
-    }
-  ];
-
   const [selectedDevice, setSelectedDevice] = useState<Device>(recommendedDevices[0]);
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [isInView, controls]);
 
   const getDifficultyClass = (difficulty: string) => {
     switch(difficulty.toLowerCase()) {
@@ -108,32 +97,18 @@ const RecommendedSection = () => {
     visible: {
       opacity: 1,
       transition: { 
-        staggerChildren: 0.08, 
-        delayChildren: 0.1,
+        staggerChildren: 0.05, 
         duration: 0.6
-      }
-    },
-    exit: {
-      opacity: 0,
-      transition: {
-        staggerChildren: 0.05,
-        staggerDirection: -1,
-        duration: 0.4
       }
     }
   };
 
   const headerVariants = {
-    hidden: { opacity: 0, y: -30 },
+    hidden: { opacity: 0, y: -20 },
     visible: { 
       opacity: 1,
       y: 0,
-      transition: { type: "spring" as const, damping: 14, stiffness: 120, mass: 1 }
-    },
-    exit: {
-      opacity: 0,
-      y: -30,
-      transition: { duration: 0.3 }
+      transition: { type: "spring" as const, damping: 14 }
     }
   };
 
@@ -145,7 +120,6 @@ const RecommendedSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      animate={controls}
       variants={containerVariants}
     >
       <div className="container">
@@ -162,10 +136,10 @@ const RecommendedSection = () => {
           {/* Left Side */}
           <m.div 
             className="device-list"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
             <div className="device-list-header">
               <h3 className="font-heading">Top Devices</h3>
@@ -184,6 +158,7 @@ const RecommendedSection = () => {
                     src={device.logo} 
                     alt={device.brand} 
                     className="list-item-logo" 
+                    loading="lazy"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${device.brand}&background=F7931A&color=fff&bold=true`;
                     }}
@@ -201,20 +176,20 @@ const RecommendedSection = () => {
           {/* Right Side */}
           <m.div 
             className="device-detail-full"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
             <AnimatePresence mode="wait">
               {selectedDevice ? (
                 <m.div
                   key={selectedDevice.id}
                   className="detail-card-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ type: "spring" as const, damping: 20 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {/* Header */}
                   <div className="detail-header-full">
@@ -223,6 +198,7 @@ const RecommendedSection = () => {
                         src={selectedDevice.logo} 
                         alt={selectedDevice.brand} 
                         className="detail-logo-full" 
+                        loading="lazy"
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${selectedDevice.brand}&background=F7931A&color=fff&bold=true`;
                         }}
@@ -271,7 +247,7 @@ const RecommendedSection = () => {
                   <div className="rom-section-full">
                     <h4 className="font-heading">Supported Custom ROMs</h4>
                     <div className="rom-tags-full">
-                      {selectedDevice.romSupport.map((rom: string, idx: number) => (
+                      {selectedDevice.romSupport.map((rom, idx) => (
                         <span key={idx} className="rom-tag-full font-mono">{rom}</span>
                       ))}
                     </div>

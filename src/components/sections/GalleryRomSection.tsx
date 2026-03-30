@@ -10,6 +10,75 @@ import imagePng from '../galeryrom/nusantara/image.png';
 import imagePng2 from '../galeryrom/nusantara/image2.png';
 import imagePng4 from '../galeryrom/nusantara/image4.png';
 
+// Data ROM (Didefinisikan diluar untuk performa)
+const romData = [
+  {
+    name: 'LineageOS',
+    images: [
+      photo1,
+      imagePng,
+      imagePng2,
+      imagePng4,
+    ]
+  },
+  {
+    name: 'PixelOS',
+    images: [
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1516534775068-bb57236fada7?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'crDroid',
+    images: [
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'EvolutionX',
+    images: [
+      'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'ArrowOS',
+    images: [
+      'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'PixelExp',
+    images: [
+      'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'DerpFest',
+    images: [
+      'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1516534775068-bb57236fada7?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=800&fit=crop'
+    ]
+  },
+  {
+    name: 'HavocOS',
+    images: [
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop',
+      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=800&fit=crop'
+    ]
+  }
+];
+
 const GalleryRomSection = () => {
   const [activeRomIndex, setActiveRomIndex] = useState(0);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -39,74 +108,6 @@ const GalleryRomSection = () => {
     setActiveRomIndex(index);
     setActiveImageIndex(0);
   };
-
-  const romData = [
-    {
-      name: 'LineageOS',
-      images: [
-        photo1,
-        imagePng,
-        imagePng2,
-        imagePng4,
-      ]
-    },
-    {
-      name: 'PixelOS',
-      images: [
-        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1516534775068-bb57236fada7?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'crDroid',
-      images: [
-        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'EvolutionX',
-      images: [
-        'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'ArrowOS',
-      images: [
-        'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'PixelExp',
-      images: [
-        'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'DerpFest',
-      images: [
-        'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1516534775068-bb57236fada7?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=800&fit=crop'
-      ]
-    },
-    {
-      name: 'HavocOS',
-      images: [
-        'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=800&fit=crop',
-        'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=800&fit=crop'
-      ]
-    }
-  ];
 
   // Hitung indeks gambar sebelumnya dan berikutnya dalam ROM yang sama
   const totalImages = romData[activeRomIndex].images.length;

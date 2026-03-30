@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import './Header.css';
 
 interface HeaderProps {
@@ -49,7 +49,7 @@ const navLinks = [
   };
 
   return (
-    <motion.header 
+    <m.header 
       className={`header ${scrollPosition > 50 ? 'scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -87,7 +87,7 @@ const navLinks = [
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <motion.nav 
+        <m.nav 
           className="nav-mobile"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
@@ -105,9 +105,9 @@ const navLinks = [
               </li>
             ))}
           </ul>
-        </motion.nav>
+        </m.nav>
       )}
-    </motion.header>
+    </m.header>
   );
 };
 
