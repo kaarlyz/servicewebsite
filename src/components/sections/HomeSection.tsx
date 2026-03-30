@@ -24,7 +24,7 @@ const HomeSection = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentText = typingTexts[textIndex];
-      
+
       if (!isDeleting && charIndex < currentText.length) {
         setTyping(currentText.substring(0, charIndex + 1));
         setCharIndex(charIndex + 1);
@@ -48,7 +48,7 @@ const HomeSection = () => {
       <div className="home-ambient-glow"></div>
 
       <div className="home-container">
-        <m.div 
+        <m.div
           className="home-content"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,24 +57,24 @@ const HomeSection = () => {
         >
           <div className="home-text-wrapper">
             <h2 className="home-title font-heading-bold">
-              Kika Akan Meningkatkan <br />
-              <span className="text-gradient">Performa Device Anda</span>
+              Kika Will Improve <br />
+              <span className="text-gradient">Your Device Performance</span>
             </h2>
-            
+
             <h3 className="home-subtitle font-mono">
               <span className="typing-text">{typing}</span>
               <span className="cursor">_</span>
             </h3>
-            
+
             <p className="home-description font-body">
-              Kami melayani berbagai brand dengan metode resmi tanpa bypass ilegal.
-              Solusi smartphone terpercaya untuk keamanan dan performa maksimal.
+              Lepaskan seluruh performa device anda hanya dengan cara menghubungi contact kami dibawah.
+              Free konsultasi dan boleh bertanya-tanya secukupnya.
             </p>
-            
+
             <div className="button-container">
-              <m.a 
-                href="https://wa.me/6285177542325" 
-                target="_blank" 
+              <m.a
+                href="https://wa.me/6285177542325"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="button-primary font-mono"
                 whileHover={{ scale: 1.05 }}
@@ -83,9 +83,9 @@ const HomeSection = () => {
                 <MessageCircle size={18} />
                 WhatsApp
               </m.a>
-              <m.a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <m.a
+                href="https://instagram.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="button-ghost font-mono"
                 whileHover={{ scale: 1.05 }}
@@ -94,9 +94,9 @@ const HomeSection = () => {
                 <Instagram size={18} />
                 Instagram
               </m.a>
-              <m.a 
-                href="https://t.me" 
-                target="_blank" 
+              <m.a
+                href="https://t.me"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="button-ghost font-mono"
                 whileHover={{ scale: 1.05 }}
@@ -110,23 +110,23 @@ const HomeSection = () => {
 
           <div className="home-graphic-wrapper">
             <div className="home-graphic animate-float">
-               <div className="orbital-ring ring-outer animate-spin-slow"></div>
-               <div className="orbital-ring ring-inner animate-spin-reverse"></div>
-               <div className="logo-container">
-                 <m.img 
-                  src={logo} 
-                  alt="KikaID Logo" 
+              <div className="orbital-ring ring-outer animate-spin-slow"></div>
+              <div className="orbital-ring ring-inner animate-spin-reverse"></div>
+              <div className="logo-container">
+                <m.img
+                  src={logo}
+                  alt="KikaID Logo"
                   className="home-hero-logo"
                   initial={{ rotate: -10, scale: 0.8 }}
                   whileInView={{ rotate: 10, scale: 1 }}
-                  transition={{ 
-                    repeat: Infinity, 
-                    repeatType: "reverse" as const, 
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "reverse" as const,
                     duration: 4,
                     ease: "easeInOut"
                   }}
-                 />
-               </div>
+                />
+              </div>
             </div>
           </div>
         </m.div>

@@ -21,7 +21,7 @@ const TestimonialsSection = () => {
       name: 'Siti Rahma',
       device: 'Samsung A52',
       rating: 5,
-      text: 'Baru pertama kali root HP, awalnya takut. Tapi RestuTech menjelaskan dengan detail dan hasilnya memuaskan. Terima kasih!',
+      text: 'Baru pertama kali root HP, awalnya takut. Tapi kika menjelaskan dengan detail dan hasilnya memuaskan. Terima kasih!',
       date: '1 minggu yang lalu'
     },
     {
@@ -54,11 +54,11 @@ const TestimonialsSection = () => {
 
     const scroll = () => {
       if (scrollRef.current && scrollRef.current.children.length > testimonials.length) {
-        scrollRef.current.scrollLeft += 1; 
-        
+        scrollRef.current.scrollLeft += 1;
+
         const firstSetItem = scrollRef.current.children[0] as HTMLElement;
         const secondSetItem = scrollRef.current.children[testimonials.length] as HTMLElement;
-        
+
         if (firstSetItem && secondSetItem) {
           const setWidth = secondSetItem.offsetLeft - firstSetItem.offsetLeft;
           if (scrollRef.current.scrollLeft >= setWidth) {
@@ -109,7 +109,7 @@ const TestimonialsSection = () => {
   return (
     <section id="testimoni" className="section testimonials-section">
       <div className="testimonials-container">
-        <m.div 
+        <m.div
           className="section-header"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -117,10 +117,10 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h1 className="font-heading text-gradient">Apa Kata Mereka</h1>
-          <p className="font-mono">Testimoni dari pelanggan setia RestuTech</p>
+          <p className="font-mono">Testimoni dari pelanggan setia Kika</p>
         </m.div>
 
-        <m.div 
+        <m.div
           className="testimonials-grid"
           variants={containerVariants}
           initial="hidden"

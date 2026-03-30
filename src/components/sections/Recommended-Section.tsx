@@ -34,7 +34,7 @@ const recommendedDevices: Device[] = [
   },
   {
     id: 2, rank: 2, brand: 'POCO',
-    logo: 'https://cdn.simpleicons.org/poco/F7931A',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Poco_Smartphone_Company_logo.svg/1280px-Poco_Smartphone_Company_logo.svg.png',
     model: 'POCO F1 / X3 Pro',
     fullModel: 'POCO F1 (Xiaomi Pocophone F1)',
     romSupport: ['Pixel Experience', 'crDroid', 'ArrowOS', 'LineageOS'],
@@ -84,7 +84,7 @@ const RecommendedSection = () => {
   const [selectedDevice, setSelectedDevice] = useState<Device>(recommendedDevices[0]);
 
   const getDifficultyClass = (difficulty: string) => {
-    switch(difficulty.toLowerCase()) {
+    switch (difficulty.toLowerCase()) {
       case 'easy': return 'easy';
       case 'medium': return 'medium';
       case 'hard': return 'hard';
@@ -96,8 +96,8 @@ const RecommendedSection = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.05, 
+      transition: {
+        staggerChildren: 0.05,
         duration: 0.6
       }
     }
@@ -105,7 +105,7 @@ const RecommendedSection = () => {
 
   const headerVariants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { 
+    visible: {
       opacity: 1,
       y: 0,
       transition: { type: "spring" as const, damping: 14 }
@@ -113,8 +113,8 @@ const RecommendedSection = () => {
   };
 
   return (
-    <m.section 
-      id="rekomendasi" 
+    <m.section
+      id="rekomendasi"
       className="recommended-section"
       ref={ref}
       initial="hidden"
@@ -134,7 +134,7 @@ const RecommendedSection = () => {
         {/* Main Content */}
         <div className="recommend-content glass-panel">
           {/* Left Side */}
-          <m.div 
+          <m.div
             className="device-list"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -154,10 +154,10 @@ const RecommendedSection = () => {
                   whileHover={{ x: 5 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <img 
-                    src={device.logo} 
-                    alt={device.brand} 
-                    className="list-item-logo" 
+                  <img
+                    src={device.logo}
+                    alt={device.brand}
+                    className="list-item-logo"
                     loading="lazy"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${device.brand}&background=F7931A&color=fff&bold=true`;
@@ -174,7 +174,7 @@ const RecommendedSection = () => {
           </m.div>
 
           {/* Right Side */}
-          <m.div 
+          <m.div
             className="device-detail-full"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -194,10 +194,10 @@ const RecommendedSection = () => {
                   {/* Header */}
                   <div className="detail-header-full">
                     <div className="detail-logo-container">
-                      <img 
-                        src={selectedDevice.logo} 
-                        alt={selectedDevice.brand} 
-                        className="detail-logo-full" 
+                      <img
+                        src={selectedDevice.logo}
+                        alt={selectedDevice.brand}
+                        className="detail-logo-full"
                         loading="lazy"
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${selectedDevice.brand}&background=F7931A&color=fff&bold=true`;

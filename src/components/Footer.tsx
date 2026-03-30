@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom font-mono">
-          <p>&copy; {currentYear} KikaID. All rights reserved. | Built on Bitcoin DeFi Aesthetic</p>
+          <p>&copy; {currentYear} KikaID. All rights reserved.</p>
         </div>
       </div>
     </footer>
